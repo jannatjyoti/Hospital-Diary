@@ -39,6 +39,12 @@
                     </div>
                   </div>
                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Designation</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="designation" value="{{ $doctor-> designation }}" class="form-control" id="inputEmail3" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
                       <input type="email" name="email" value="{{ $doctor-> email }}" class="form-control" id="inputEmail3" placeholder="">
@@ -78,7 +84,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">save</button>
+                  <button type="submit" class="btn btn-info">Update</button>
                   <button type="submit" class="btn btn-default float-right">Cancel</button>
                 </div>
                 <!-- /.card-footer -->

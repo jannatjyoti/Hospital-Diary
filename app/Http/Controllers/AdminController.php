@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Doctor;
+use App\Models\ServiceDetail;
+
 use Illuminate\Support\facades\Hash;
 
 class AdminController extends Controller
@@ -100,7 +103,14 @@ class AdminController extends Controller
     public function admin_dashboard()
     {
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
-        return view('dashboards.admins.index', $data);
+        $doctors= Doctor::where('admin_id', session('LoggedUser'))->get();
+        $serviceXray= ServiceDetail::where('admin_id', session('LoggedUser'))
+        ->where('service_id', '5')->first();
+        $serviceOxygen= ServiceDetail::where('admin_id', session('LoggedUser'))
+        ->where('service_id', '3')
+        ->first();
+        // return $serviceDetail;
+        return view('dashboards.admins.index', $data, compact('serviceXray','doctors','serviceOxygen'));
     }
 
     /**

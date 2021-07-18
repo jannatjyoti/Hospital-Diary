@@ -6,6 +6,10 @@
     <title>AdminLTE 3 | Dashboard</title>
   <title>@yield('title')</title>
   <base href="{{ \URL::to('/') }}">
+
+  <script src="{{ asset('code.jquery.com/jquery-2.1.3.min.js') }}"></script>
+<script src="{{ asset('unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
+<link rel="stylesheet" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -100,7 +104,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link">
+                        <a href="admin/dashboard" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -124,13 +128,39 @@
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="" class="nav-link">
+                                    <a href="{{ url('admin/service') }}" class="nav-link">
                                       <i class="far fa-circle nav-icon"></i>
-                                      <p>View Available Service</p>
+                                      <p>Service List</p>
                                     </a>
                                   </li>
+
                                 </ul>
                               </li>
+                              <li class="nav-item menu-close">
+                                <a href="#" class="nav-link">
+                                  <i class="nav-icon fas fa-concierge-bell"></i>
+                                  <p>
+                                    Service Detail
+                                    <i class="right fas fa-angle-left"></i>
+                                  </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                  <li class="nav-item">
+                                    <a href="{{url('admin/serviceDetail/create')}}" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Add Service Detail</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="{{ url('admin/serviceDetail') }}" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Service List</p>
+                                    </a>
+                                  </li>
+
+                                </ul>
+                              </li>
+                              
                               <li class="nav-item menu-close">
                                 <a href="#" class="nav-link ">
                                 <!-- <i class="nav-icon fas fa-concierge-bell"></i> -->

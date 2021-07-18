@@ -25,7 +25,7 @@
 
     <h3 class="profile-username text-center">{{ $doctor-> doctor_Name }}</h3>
 
-    <p class="text-muted text-center">Doctor</p>
+    <p class="text-muted text-center">{{ $doctor-> designation }}</p>
 
     <div class="card-body">
       <strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Degree</strong>

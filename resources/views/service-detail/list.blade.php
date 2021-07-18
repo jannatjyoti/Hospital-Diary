@@ -5,39 +5,39 @@
  
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Doctor List</h3>
+      <h3 class="card-title">Service Detail List</h3>
     </div>
+    {{ Session::get('service') }}
     <!-- /.card-header -->
     <div class="card-body">
       <table id="doctor_datatable" class="table table-hover">
         <thead>
         <tr>
-          <th class="bg-primary">Doctor Name</th>
-          <th class="bg-primary">Email</th>
-          <th class="bg-primary">Specialized</th>
+          <th class="bg-primary">Service Name</th>
+          <th class="bg-primary">Total</th>
+          <th class="bg-primary">Running</th>
+          <th class="bg-primary">Available</th>
+      
           <th class="bg-primary">Option</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ( $doctors as $doctor)
+
+            @foreach ( $serviceDetails as $serviceDetail)
         <tr>
-          <td>{{ $doctor-> doctor_Name }}</td>
-          <td>{{ $doctor-> email }}</td>
-          <td>{{ $doctor-> specialized}}</td>
+           <td>{{ $serviceDetail->services-> service_name }}</td>
+          <td>{{ $serviceDetail->total }}</td>
+          <td>{{ $serviceDetail->running }}</td>
+          <td>{{ $serviceDetail->total - $serviceDetail->running }}</td>
+          
           <td>
-                <a href="{{ url("admin/doctor/$doctor->id") }}" class="btn btn-primary" >
-                <i class="fas fa-eye"></i>
-                </a>
-                <a href="{{ url("admin/doctor/$doctor->id/edit") }}" class="btn btn-primary" >
+              <a href="{{ url("admin/serviceDetail/$serviceDetail->id/edit") }}" class="btn btn-primary" >
                 <i class="fas fa-edit"></i> 
                 </a>
-                <a href="{{ url("admin/doctor/delete/$doctor->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
+                <a href="{{ url("admin/serviceDetail/delete/$serviceDetail->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
                   <i class="fas fa-trash-alt"></i>
                 </a>
-
-
-
-            </td>
+            </td>        
         </tr>
         @endforeach
         

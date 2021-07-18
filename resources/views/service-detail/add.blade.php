@@ -24,17 +24,36 @@
 
     <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Service</h3>
+                <h3 class="card-title">Add Service Detail</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal">
+              <form action="{{ url('admin/serviceDetail') }}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="card-body">
+                  <div class="col-sm-6">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Select Service</label>                                       
+                      <select name="service_id" class="custom-select">
+                        <option >select...</option>
+                        @foreach ($services as $key => $value)
+                        <option value="{{ $value->id }}" >{{ $value-> service_name }} </option>
+                        
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="service_name" class="form-control" id="inputEmail3" placeholder="Service Name">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Total Service</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="total" class="form-control" id="inputEmail3" placeholder="Service Name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Running Service</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="running" class="form-control" id="inputEmail3" placeholder="Service Name">
                     </div>
                   </div>
                   

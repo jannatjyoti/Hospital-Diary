@@ -42,6 +42,7 @@ class DoctorController extends Controller
 
         $this->validate($request,[
             'doctor_Name'=>'required',
+            'designation'=>'required',
              'email'=>'required|email|unique:doctors,email',
              'degree'=>'required',
              'specialized'=>'required',
@@ -93,19 +94,22 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return $id;
+        //return $id;
         $this->validate($request,[
             'doctor_Name'=>'required',
-            'email'=>'required|email|unique:doctors,email'.$request->id,
+            'designation'=>'required',
+            'email'=>'required|email|unique:doctors,email,'.$id,
              'degree'=>'required',
              'specialized'=>'required',
              'number'=> 'required',
              'chamber_time'=>'required',
              'room_no'=>'required'
         ]);
+        //return $request;
         
         $doctor = Doctor::find($id);
         $doctor->doctor_Name = $request-> doctor_Name;
+        $doctor->designation = $request->designation;
         $doctor->email = $request->email;
         $doctor->degree = $request->degree;
         $doctor->specialized = $request->specialized;

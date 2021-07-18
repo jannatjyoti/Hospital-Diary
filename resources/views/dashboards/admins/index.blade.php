@@ -30,14 +30,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $doctors->count() }} <sup style="font-size: 15px">total</sup></h3>
 
-                            <p>New Orders</p>
+                            <a href="{{url('admin/doctor/create')}}" style="color: white"><p>Add Doctor</p></a>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-user-md"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{url('admin/doctor')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -45,12 +45,16 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            @if ($serviceXray==null)
+                                <h3>0</h3>
+                            @else
+                            <h3>{{ $serviceXray->total - $serviceXray->running }}</h3>
+                            @endif
 
-                            <p>Bounce Rate</p>
+                            <p>X-ray</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fas fa-x-ray"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -60,9 +64,13 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            @if ($serviceOxygen==null)
+                                <h3>0</h3>
+                            @else
+                            <h3>{{ $serviceOxygen->total - $serviceOxygen->running }}</h3>
+                            @endif
 
-                            <p>User Registrations</p>
+                            <p>Oxygen Cylinder</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>

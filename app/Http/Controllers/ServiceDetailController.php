@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Service;
 use App\Models\ServiceDetail;
 
 
-class ServiceController extends Controller
+class ServiceDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,11 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services= Service::where('admin_id',session('LoggedUser'))->get();
+        // $service = array();
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
-
-        return view('service.list', $data)->with('services', $services);
+        $serviceDetails = ServiceDetail::where('admin_id', session('LoggedUser'))->get();
+        
+        return view('service-detail.list', $data)->with('serviceDetails', $serviceDetails);
     }
 
     /**
@@ -30,10 +30,10 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
-        return view ('service.add', $data);
+        $services = Service::where('admin_id', session('LoggedUser'))->get();
+        return view('service-detail.add', $data)->with('services', $services);
     }
 
     /**
@@ -45,12 +45,14 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'service_name'=> 'required'
+            'total'=> 'required',
+            'running'=> 'required' 
         ]);
+        
         $request->request->add(['admin_id' => session('LoggedUser')]);
         $data= $request->all();
-        Service::create($data);
-        return redirect('admin/service');
+        ServiceDetail::create($data);
+        return redirect('');
     }
 
     /**
@@ -72,10 +74,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        
-        $service = Service::where('admin_id', session('LoggedUser'))->find($id);
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
-        return view('service.edit', $data)->with('service', $service);
+        $serviceDetails= ServiceDetail::where('admin_id', session('LoggedUser'))->find($id);
+        return view('service-detail.edit', $data)->with('serviceDetails', $serviceDetails);
     }
 
     /**
@@ -87,15 +88,19 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[
-            'service_name'=> 'required'
+            'total'=> 'required',
+            'running'=> 'required' 
         ]);
 
-        $service = Service::find($id);
-        $service->service_name = $request-> service_name;
-        $service->save();
+        $serviceDetail = ServiceDetail::find($id);
+        $serviceDetail->total = $request->total;
+        $serviceDetail->running = $request->running;
+        $serviceDetail->save();
 
-        return redirect('admin/service');
+        return redirect('admin/serviceDetail');
+
     }
 
     /**
@@ -106,8 +111,8 @@ class ServiceController extends Controller
      */
     public function delete($id)
     {
-        $service= Service::find($id);
-        $service->delete();
-        return redirect('admin/service');
+        $serviceDetail= ServiceDetail::find($id);
+        $serviceDetail->delete();
+        return redirect('admin/serviceDetail');
     }
 }
