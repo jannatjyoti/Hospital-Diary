@@ -24,7 +24,7 @@ class CreateDoctorsTable extends Migration
             $table->string('chamber_time');
             $table->string('room_no');
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete("cascade");
             $table->timestamps();
         });
     }

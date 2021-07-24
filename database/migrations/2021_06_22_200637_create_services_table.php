@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('service_name');
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete("cascade");
             $table->timestamps();
         });
     }
