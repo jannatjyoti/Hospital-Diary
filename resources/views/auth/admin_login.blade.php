@@ -69,10 +69,10 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/well-hospital.
             </div>
           </div> --}}
           <!-- /.col -->
-          <div class="col-4" style="margin-left: 8%">
+          <div class="col-4" style="margin-left: 50px">
             <a href="{{ route('auth.admin_register') }}" class="btn btn-success btn-block btn-flat" >Sign Up</a>
           </div>
-          <div class="col-4" style="margin-right: 10%; margin-left: 12%">
+          <div class="col-4" style="margin-right: 10px; margin-left: 5px">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
           <!-- /.col -->

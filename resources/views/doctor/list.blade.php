@@ -10,7 +10,7 @@
     </div> --}}
     <div class="card-header">
       <h1 class="card-title">Doctor List</h1>
-      <a href="{{url('admin/doctor/create')}}"><button   class="col-2 btn-outline-info  float-right " >Add</button></a>
+      <a href="{{url('admin/doctor/create')}}"><button   class="col-1 btn-outline-info  float-right " >Add</button></a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

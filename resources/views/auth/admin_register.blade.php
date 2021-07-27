@@ -118,19 +118,13 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_pa
         </div>
         <div class="row" >
           
-          <div class="col-4">
-            
-            <button type="submit" class="btn btn-primary btn-block btn-flat" style="color: white;margin: 4px 55px"><a href="{{ url("admin_login") }}" style="color: white">Sign In</a></button>
-          
+          <div class="col-4" style="margin-left: 50px">            
+            <a href="{{ url("admin_login") }}" class="btn btn-primary btn-block btn-flat">Sign In</a>
           </div>
-
-        
           <!-- /.col -->
-          {{-- <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-          </div> --}}
-          <div class="col-4">
-            <button type="submit" class="btn btn-success btn-block btn-flat" style="margin: 4px 60px;">Register</button>
+
+          <div class="col-4" style="margin-right: 10px; margin-left: 5px">
+            <button type="submit" class="btn btn-success btn-block btn-flat">Register</button>
           </div>
           <!-- /.col -->
         </div>
