@@ -45,6 +45,7 @@ class ServiceDetailController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'service_id'=> 'required',
             'total'=> 'required',
             'running'=> 'required' 
         ]);
@@ -52,7 +53,7 @@ class ServiceDetailController extends Controller
         $request->request->add(['admin_id' => session('LoggedUser')]);
         $data= $request->all();
         ServiceDetail::create($data);
-        return redirect('');
+        return redirect('admin/serviceDetail');
     }
 
     /**

@@ -104,13 +104,10 @@ class AdminController extends Controller
     {
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
         $doctors= Doctor::where('admin_id', session('LoggedUser'))->get();
-        $serviceXray= ServiceDetail::where('admin_id', session('LoggedUser'))
-        ->where('service_id', '1')->first();
-        $serviceOxygen= ServiceDetail::where('admin_id', session('LoggedUser'))
-        ->where('service_id', '2')
-        ->first();
-        // return $serviceDetail;
-        return view('dashboards.admins.index', $data, compact('serviceXray','doctors','serviceOxygen'));
+        //$serviceXray= ServiceDetail::where('admin_id', session('LoggedUser'))->where('service_id', '1')->first();
+        
+        $serviceDetails = ServiceDetail::where('admin_id', session('LoggedUser'))->get();
+        return view('dashboards.admins.index', $data, compact('doctors','serviceDetails'));
     }
 
     /**

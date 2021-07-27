@@ -6,11 +6,12 @@
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Service Detail List</h3>
+      <a href="{{url('admin/serviceDetail/create')}}"><button type="submit" class="btn btn-primary  btn-flat float-right">Add</button></a>
     </div>
     {{ Session::get('service') }}
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="doctor_datatable" class="table table-hover">
+      <table id="service-detail_datatable" class="table table-hover">
         <thead>
         <tr>
           <th class="bg-primary">Service Name</th>
@@ -52,18 +53,21 @@
 
 @push("page-js")
 <!-- DataTables -->
-<script src="{{asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 <script>
     $(function () {
     //   $("#example1").DataTable();
-      $('#doctor_datatable').DataTable({
+      $('#service-detail_datatable').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "pageLength": 5,
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]],
+        "lengthChange": 5,
         "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
+        // "ordering": true,
+        // "info": true,
+        // "autoWidth": false,
       });
     });
     <!-- DataTables -->

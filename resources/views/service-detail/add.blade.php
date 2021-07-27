@@ -28,15 +28,27 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              
+              @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
               <form action="{{ url('admin/serviceDetail') }}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="card-body">
-                  <div class="col-sm-6">
+                  {{-- <div class="col-sm-6"> --}}
                     <!-- select -->
-                    <div class="form-group">
-                      <label>Select Service</label>                                       
-                      <select name="service_id" class="custom-select">
-                        <option >select...</option>
+                    {{-- <div class="form-group"> --}}
+                      <div class="form-group row">
+                      <label style="margin: 5px 10px">Select Service</label>    
+                      <div class="col-sm-8">                          
+                      <select style="margin: 5px 60px" name="service_id" class="custom-select">
+                        <option >Select...</option>
                         @foreach ($services as $key => $value)
                         <option value="{{ $value->id }}" >{{ $value-> service_name }} </option>
                         
@@ -47,13 +59,13 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Total Service</label>
                     <div class="col-sm-8">
-                      <input type="text" name="total" class="form-control" id="inputEmail3" placeholder="Service Name">
+                      <input type="text" name="total" value="{{ old('total') }}" class="form-control" id="inputEmail3" placeholder="Service Name">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Running Service</label>
                     <div class="col-sm-8">
-                      <input type="text" name="running" class="form-control" id="inputEmail3" placeholder="Service Name">
+                      <input type="text" name="running" value="{{ old('running') }}" class="form-control" id="inputEmail3" placeholder="Service Name">
                     </div>
                   </div>
                   

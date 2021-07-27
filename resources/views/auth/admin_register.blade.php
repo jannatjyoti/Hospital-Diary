@@ -24,15 +24,16 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition register-page">
-<div class="register-box">
+<body class="hold-transition register-page" style="background-attachment: fixed; 
+background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_patient.jpg') }}');">
+<div class="register-box" style = "height: 600px;">
   <div class="register-logo">
     <a href="../../index2.html"><b>Admin Register</b></a>
   </div>
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <h5 class="login-box-msg"><b>Register a new membership</b></h5>
 
       <form action="{{ route('auth.admin_save') }}" method="post">
          @if(Session::get('success'))
@@ -115,18 +116,21 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
+        <div class="row" >
+          
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            
+            <button type="submit" class="btn btn-primary btn-block btn-flat" style="color: white;margin: 4px 55px"><a href="{{ url("admin_login") }}" style="color: white">Sign In</a></button>
+          
+          </div>
+
+        
+          <!-- /.col -->
+          {{-- <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div> --}}
+          <div class="col-4">
+            <button type="submit" class="btn btn-success btn-block btn-flat" style="margin: 4px 60px;">Register</button>
           </div>
           <!-- /.col -->
         </div>
@@ -134,7 +138,7 @@
 
       
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      {{-- <a href="login.html" class="text-center">I already have a membership</a> --}}
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
