@@ -40,46 +40,46 @@
                         <a href="{{url('admin/doctor')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                @php
+                    
+                $class = ['bg-success','bg-warning','bg-info','bg-secondary','bg-primary','bg-muted','bg-danger'];
+                $classLength = count($class);
+                $i = 0;
+                @endphp
+                 
+                @foreach ($serviceDetails as $item)
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    
+                    <div class="small-box {{ $class[$i] }}">
+                    @php
+                        if ($i > $classLength-2){
+                            $i = 0;
+                        }
+                        else{ $i++; }
+                    @endphp 
+
                         <div class="inner">
-                            @if ($serviceXray==null)
+                            @if ($item==null)
                                 <h3>0</h3>
                             @else
-                            <h3>{{ $serviceXray->total - $serviceXray->running }}</h3>
+                            <h3>{{ $item->available() }}</h3>
                             @endif
 
-                            <p>X-ray</p>
+                            <p>{{ $item->services->service_name}}</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-x-ray"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ url('admin/serviceDetail') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            @if ($serviceOxygen==null)
-                                <h3>0</h3>
-                            @else
-                            <h3>{{ $serviceOxygen->total - $serviceOxygen->running }}</h3>
-                            @endif
+                @endforeach
 
-                            <p>Oxygen Cylinder</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                {{-- <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
@@ -92,11 +92,11 @@
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                </div> --}}
                 <!-- ./col -->
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
                 <!-- ./col -->
-            </div>
+            </div> --}}
             <!-- /.row -->
             <!-- Main row -->
 

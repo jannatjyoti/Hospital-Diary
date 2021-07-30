@@ -22,15 +22,16 @@
    </head>
 
    
-<body class="hold-transition login-page"  style="background-image: url('{{ asset('Image/well-hospital.jpg') }}');">
- <div class="login-box" style = "height: 400px;" >
+<body class="hold-transition login-page"  style="background-attachment: fixed; 
+background-size: 100% 100%;background-image: url('{{ asset('Image/well-hospital.jpg') }}');">
+ <div class="login-box" style = "height: 450px;" >
   <div class="login-logo">
     <a href="../../index2.html"><b>Admin Log in</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg"><b>Sign in to start your session</b></p>
 
       <form action="{{ route('auth.admin_check') }}" method="post">
          @if(Session::get('fail'))
@@ -59,16 +60,19 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+          {{-- <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
                <a href="{{ route('auth.admin_register') }}" class="text-center">Register a new membership</a>
               </label>
             </div>
-          </div>
+          </div> --}}
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-4" style="margin-left: 50px">
+            <a href="{{ route('auth.admin_register') }}" class="btn btn-success btn-block btn-flat" >Sign Up</a>
+          </div>
+          <div class="col-4" style="margin-right: 10px; margin-left: 5px">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
           <!-- /.col -->
@@ -77,9 +81,9 @@
 
       
       <!-- /.social-auth-links -->
-      <p class="mb-0">
+      {{-- <p class="mb-0">
         <a href="{{ route('auth.admin_register') }}" class="text-center">Register a new membership</a>
-      </p>
+      </p> --}}
     </div>
     <!-- /.login-card-body -->
   </div>

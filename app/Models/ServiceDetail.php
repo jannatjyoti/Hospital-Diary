@@ -12,4 +12,7 @@ class ServiceDetail extends Model
         return $this->belongsTo('App\Models\Service','service_id');
     }
     
+    public function available(){
+        return $this->total - $this->running;
+    }
 }

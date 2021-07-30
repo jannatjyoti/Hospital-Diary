@@ -154,7 +154,7 @@
                                   <li class="nav-item">
                                     <a href="{{ url('admin/serviceDetail') }}" class="nav-link">
                                       <i class="far fa-circle nav-icon"></i>
-                                      <p>Service List</p>
+                                      <p>Service Detail List</p>
                                     </a>
                                   </li>
 

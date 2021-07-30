@@ -4,18 +4,23 @@
 @section('content')
  
 <div class="card">
-    <div class="card-header">
+    {{-- <div class="card-header">
       <h3 class="card-title">Doctor List</h3>
+      <button type="button" class="btn btn-primary" style="margin: 5px 675px">Primary</button>
+    </div> --}}
+    <div class="card-header">
+      <h1 class="card-title">Doctor List</h1>
+      <a href="{{url('admin/doctor/create')}}"><button   class="col-1 btn-outline-info  float-right " >Add</button></a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="doctor_datatable" class="table table-hover">
+      <table id="doctor_datatable" class="table table-hover dt-responsive" style="width: 100%">
         <thead>
         <tr>
-          <th class="bg-primary">Doctor Name</th>
-          <th class="bg-primary">Email</th>
-          <th class="bg-primary">Specialized</th>
-          <th class="bg-primary">Option</th>
+          <th class="bg-info">Doctor Name</th>
+          <th class="bg-info">Email</th>
+          <th class="bg-info">Specialized</th>
+          <th class="bg-info">Option</th>
         </tr>
         </thead>
         <tbody>
@@ -24,11 +29,11 @@
           <td>{{ $doctor-> doctor_Name }}</td>
           <td>{{ $doctor-> email }}</td>
           <td>{{ $doctor-> specialized}}</td>
-          <td>
-                <a href="{{ url("admin/doctor/$doctor->id") }}" class="btn btn-primary" >
+          <td class="col-2" style='white-space: nowrap'>
+                <a href="{{ url("admin/doctor/$doctor->id") }}" class="btn btn-info" >
                 <i class="fas fa-eye"></i>
                 </a>
-                <a href="{{ url("admin/doctor/$doctor->id/edit") }}" class="btn btn-primary" >
+                <a href="{{ url("admin/doctor/$doctor->id/edit") }}" class="btn btn-info" >
                 <i class="fas fa-edit"></i> 
                 </a>
                 <a href="{{ url("admin/doctor/delete/$doctor->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
@@ -40,9 +45,8 @@
             </td>
         </tr>
         @endforeach
-        
+      
         </tbody>
-        
       </table>
     </div>
     <!-- /.card-body -->
@@ -52,18 +56,23 @@
 
 @push("page-js")
 <!-- DataTables -->
-<script src="{{asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
 <script>
     $(function () {
     //   $("#example1").DataTable();
       $('#doctor_datatable').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "pageLength": 5,
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]],
+        "lengthChange": 5,
         "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
+        // "iDisplayLength": 5,
+        // "ordering": true,
+        // "info": true,
+        // "autoWidth": false,
       });
     });
     <!-- DataTables -->

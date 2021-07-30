@@ -28,55 +28,65 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              
+              @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
               <form action="{{url('admin/doctor')}}" method="post" class="form-horizontal">
               @csrf
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Doctor Name</label>
                     <div class="col-sm-10">
-                      <input type="text" name="doctor_Name" class="form-control" id="inputEmail3" placeholder="Doctor Name">
+                      <input type="text" name="doctor_Name" value="{{ old('doctor_Name') }}" class="form-control" id="inputEmail3" placeholder="Doctor Name">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Designation</label>
                     <div class="col-sm-10">
-                      <input type="text" name="designation" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="designation" value="{{ old('designation') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                      <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Degree	</label>
                     <div class="col-sm-10">
-                      <input type="text" name="degree" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="degree" value="{{ old('degree') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Specialized</label>
                     <div class="col-sm-10">
-                      <input type="text" name="specialized" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="specialized" value="{{ old('specialized') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">number</label>
                     <div class="col-sm-10">
-                      <input type="text" name="number" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="number" value="{{ old('number') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Chamber Time</label>
                     <div class="col-sm-10">
-                      <input type="text" name="chamber_time" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="chamber_time" value="{{ old('chamber_time') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Room No</label>
                     <div class="col-sm-10">
-                      <input type="text" name="room_no" class="form-control" id="inputEmail3" placeholder="">
+                      <input type="text" name="room_no" value="{{ old('room_no') }}" class="form-control" id="inputEmail3" placeholder="">
                     </div>
                   </div>
                   

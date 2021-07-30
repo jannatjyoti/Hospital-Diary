@@ -28,13 +28,22 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
               <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
                     <div class="col-sm-10">
-                      <input type="text" name="service_name" class="form-control" id="inputEmail3" placeholder="Service Name">
+                      <input type="text" name="service_name" value="{{ old('service_name') }}" class="form-control" id="inputEmail3" placeholder="Service Name">
                     </div>
                   </div>
                   

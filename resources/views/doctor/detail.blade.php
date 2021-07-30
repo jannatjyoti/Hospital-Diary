@@ -19,7 +19,7 @@
 </section>
 <div class="container">
   <div class="col-md-9">
-<div class="card card-primary card-outline">
+<div class="card card-info card-outline">
   <div class="card-body box-profile">
     
 
