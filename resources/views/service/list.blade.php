@@ -20,15 +20,18 @@
         <tbody>
             @foreach ( $services as $service)
         <tr>
+          <input type="hidden" class="servicedelete_val" value="{{ $service->id }}">
           <td>{{ $service-> service_name }}</td>
           
           <td>
                  <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-primary" >
                 <i class="fas fa-edit"></i> 
                 </a>
-                <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
+                {{-- <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
                   <i class="fas fa-trash-alt"></i>
-                </a>
+                </a> --}}
+
+                <button type="button" class=" btn btn-danger delete"><i class="fas fa-trash-alt"></i></button>
 
             </td>
           
@@ -50,6 +53,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
   
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(function () {
     //   $("#example1").DataTable();
@@ -65,31 +69,64 @@
       });
     });
     <!-- DataTables -->
-  </script>
 
-  <script>
+    // swal("Delete","","error",{
+    //     button:"OK",
+    //   });
 
+   $(function(){
+    
+//     $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
+     $('.delete').click(function(e){
+      
 
+       var delete_id = $(this).closest("tr").find('.servicedelete_val').val();
+       alert(delete_id);
+      
+          console.log(delete_id);
+      swal("Delete",{
+  title: "Are you sure?",
+  text: "Yes delete this data!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+  
+})
+.then((willDelete) => {
+  
+  if (willDelete) {
+    console.log(delete_id);
+// var data = {
+// // "_token": $('input[name="csrf-token"]').val(),
+// "id": delete_id,
+// };
 
+    $.ajax({
+      type:"DELETE"
+      url:'/admin/service/delete/'+delete_id,
+      // data: data,
+      success: function(response){
+        swal(response.massage, {
+      icon: "success",
+    });
+    .then((result) => {
+      location.reload();
+    });
+      }
 
-    $(function(){
-  $(".delete").click(function(){
-      swal({   
-          title: "Are you sure?",   
-          text: "You will not be able to recover this imaginary file!",   
-          type: "warning",   
-          showCancelButton: true,   
-          confirmButtonColor: "#DD6B55",   
-          confirmButtonText: "Yes, delete it!",   
-          closeOnConfirm: false 
-      }).then(isConfirmed => { 
-        if(isConfirmed) {
-          $(".file").addClass("isDeleted");
-          swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
-}
-        });
-  });
+    });
+    
+  }
 });
+     });
+
+   });
+
+
   </script>
     
 @endpush
