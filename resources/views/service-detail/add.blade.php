@@ -48,7 +48,7 @@
                       <label style="margin: 5px 10px">Select Service</label>    
                       <div class="col-sm-8">                          
                       <select style="margin: 5px 60px" name="service_id" class="custom-select">
-                        <option >Select...</option>
+                        <option value="">Select...</option>
                         @foreach ($services as $key => $value)
                         <option value="{{ $value->id }}" >{{ $value-> service_name }} </option>
                         

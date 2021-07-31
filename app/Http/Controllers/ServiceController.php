@@ -108,6 +108,7 @@ class ServiceController extends Controller
     {
         $service= Service::find($id);
         $service->delete();
-        return redirect('admin/service');
+        // return redirect('admin/service');
+        return response()->json(['massage'=>'Service deleted successfully']);
     }
 }
