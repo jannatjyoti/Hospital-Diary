@@ -39,8 +39,12 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('/admin/service', ServiceController::class);
     Route::resource('/admin/doctor', DoctorController::class);
     Route::get('/admin/doctor/delete/{doctor}', [DoctorController::class,'delete']);
-    Route::resource('/admin/service', ServiceController::class);
+    Route::resource('admin/service', ServiceController::class);
     Route::get('/admin/service/delete/{service}', [ServiceController::class,'delete']);
     Route::resource('/admin/serviceDetail', ServiceDetailController::class);
     Route::get('/admin/serviceDetail/delete/{serviceDetail}', [ServiceDetailController::class,'delete']);
+    
+    // Route::get('importExportView', [ServiceController::class, 'importExportView']);
+    // Route::get('export', [ServiceController::class, 'export'])->name('export');
+    Route::post('import', [ServiceController::class, 'import'])->name('import');
 });

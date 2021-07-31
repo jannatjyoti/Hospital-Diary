@@ -55,15 +55,39 @@
                 </div>
                 <!-- /.card-footer -->
               </form>
+              
+              <div>
+                  <form method="post" enctype="multipart/form-data" action="{{ route('import') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                      <table class="table">
+                        <tr>
+                          <td width="40%">
+                            <label>Select file for upload</label>
+                            <input type="file" name="select_file">
+                          </td>
+                          <td class="float-right">
+                            <input type="submit" name="upload" class="btn btn-primary" value="upload">
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+
+                <br />
+
+                  </div>
+                </div>
             </div>
 
 
 
                 <!-- /input-group -->
-              </div>
+          </div>
               <!-- /.card-body -->
-            </div>
-            </div>
+        </div>
+  </div>
             <!-- </div> -->
 
 @endsection
