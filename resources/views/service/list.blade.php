@@ -76,11 +76,11 @@
 
    $(function(){
     
-//     $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     }
-// });
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
      $('.delete').click(function(e){
       
 
@@ -100,10 +100,10 @@
   
   if (willDelete) {
     console.log(delete_id);
-// var data = {
-// // "_token": $('input[name="csrf-token"]').val(),
-// "id": delete_id,
-// };
+var data = {
+// "_token": $('input[name="csrf-token"]').val(),
+"id": delete_id,
+};
 
     $.ajax({
       type:"DELETE"
