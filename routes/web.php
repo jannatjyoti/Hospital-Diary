@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\DoctorController;
 
@@ -18,9 +19,12 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/ui', function () {
     return view('welcome');
-});
+})->name('ui');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/service/{id}', [HomeController::class, 'service']);
+
 
 Route::post('/admin_save', [AdminController::class, 'admin_save'])->name('auth.admin_save');
 Route::post('/admin_check', [AdminController::class, 'admin_check'])->name('auth.admin_check');
@@ -47,4 +51,5 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     // Route::get('importExportView', [ServiceController::class, 'importExportView']);
     // Route::get('export', [ServiceController::class, 'export'])->name('export');
     Route::post('import', [ServiceController::class, 'import'])->name('import');
+
 });
