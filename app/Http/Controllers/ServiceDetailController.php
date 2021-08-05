@@ -32,7 +32,11 @@ class ServiceDetailController extends Controller
     public function create()
     {
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
-        $services = Service::where('admin_id', session('LoggedUser'))->get();
+
+        $serviceDetails= ServiceDetail::
+            where('admin_id','=', session('LoggedUser'))->pluck('service_id');
+
+        $services = Service::whereNotIn('id', $serviceDetails)->select('id','service_name')->get();
         return view('service-detail.add', $data)->with('services', $services);
     }
 
@@ -53,7 +57,7 @@ class ServiceDetailController extends Controller
         $request->request->add(['admin_id' => session('LoggedUser')]);
         $data= $request->all();
         ServiceDetail::create($data);
-        return redirect('admin/serviceDetail');
+        return redirect('admin/serviceDetail')->with('success','Service details added.');
     }
 
     /**

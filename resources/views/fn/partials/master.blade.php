@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Medical Diary - @yield('title', 'Dashboard')</title>
+    <title>Hospital Diary - @yield('title', 'Dashboard')</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('fn/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fn/fonts/line-icons.css') }}">
@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('fn/css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fn/css/responsive.css') }}">
 
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     @yield('styles')
 </head>
@@ -22,6 +25,14 @@
     @include('fn.partials.header')
 
     <div id="contents">
+        <div class="container">
+            <div class="col-3"></div>
+            <div class="col-6">
+                @include('fn.partials.message')
+            </div>
+
+        </div>
+
         @yield('contents')
     </div>
 

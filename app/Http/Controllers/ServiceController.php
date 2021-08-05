@@ -13,14 +13,20 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('SuperAdmin')->except('index');
+        //$this->middleware('AuthCheck')->except(['index','create']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $services= Service::where('admin_id',session('LoggedUser'))->get();
+        $services= Service::get();
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
 
         return view('service.list', $data)->with('services', $services);

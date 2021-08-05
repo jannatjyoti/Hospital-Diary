@@ -48,27 +48,27 @@ class AdminController extends Controller
     {
         $request->validate([
             'hospital_name'=>'required',
+            'admin_name'=>'required',
             'hospital_code'=>'required',
             'email'=>'required|email|unique:admins',
             'password'=>'required|min:5|max:12',
             'address'=>'required',
             'contact_no'=>'required',
-            'is_active'=>'required',
         ]);
         
         // insert data into database
         $admin = new Admin();
+        $admin->admin_name = $request->admin_name;
         $admin->hospital_name = $request->hospital_name;
         $admin->hospital_code = $request->hospital_code;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
         $admin->address = $request->address;
         $admin->contact_no = $request->contact_no;
-        $admin->is_active = $request->is_active;
 
         $save = $admin->save();
         if($save){
-            return back()->with('success', 'New Client successfully added to database.');
+            return back()->with('success', 'New client successfully added to database.');
         }else{
             return back()->with('fail', 'Somthing went wrong, please check and try again.');
         }
@@ -93,6 +93,7 @@ class AdminController extends Controller
                 //Auth::user = $adminInfo;
                 //$request->session()->put('LoggedUser', $adminInfo->id);
                 session(['LoggedUser' => $adminInfo->id]);
+                session(['role' => $adminInfo->role]);
                 return redirect('admin/dashboard');
             }else{
                 return back()->with('fail', "Incorrect password.");

@@ -11,6 +11,9 @@ class ServiceDetail extends Model
     public function services(){
         return $this->belongsTo('App\Models\Service','service_id');
     }
+    public function hospital(){
+        return $this->belongsTo('App\Models\Admin','admin_id');
+    }
     
     public function available(){
         return $this->total - $this->running;

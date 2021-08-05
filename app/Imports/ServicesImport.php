@@ -17,7 +17,7 @@ class ServicesImport implements ToModel, WithHeadingRow
     {
         return new Service([
             'service_name'     => $row['service_name'],
-            'admin_id'    => $row['admin_id'],
+            'admin_id'    => session('LoggedUser'),
         ]);
     }
 }

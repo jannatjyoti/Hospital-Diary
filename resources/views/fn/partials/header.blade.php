@@ -1,4 +1,5 @@
 <header id="header-wrap">
+
     <div class="top-bar">
         <div class="container">
             <div class="row">
@@ -19,11 +20,21 @@
                         <a class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a>
                         <a class="google" href="#"><i class="lni-google-plus"></i></a>
                     </div>
+
                     <div class="header-top-right float-right">
+                        @if (session()->has('LoggedUser'))
+                        <a href="{{ route('auth.admin_logout') }}" class="header-top-button"><i class="lni-exit"></i>
+                            Log Out
+                        </a>
+                        <a href="{{ route('admin.home') }}" class="header-top-button"><i class="lni-home"></i>
+                            Admin Home
+                        </a>
+                        @else
                         <a href="{{ route('auth.admin_login') }}" class="header-top-button"><i class="lni-lock"></i> Log
                             In</a> |
                         <a href="{{ route('auth.admin_register') }}" class="header-top-button"><i
                                 class="lni-pencil"></i> Register</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -47,9 +58,7 @@
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="navbar-nav mr-auto w-100 justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="category.html">
-                            Categories
-                        </a>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
@@ -64,27 +73,11 @@
                             @endif
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="about.html">About Us</a>
-                            <a class="dropdown-item" href="services.html">Services</a>
-                            <a class="dropdown-item" href="ads-details.html">Ads Details</a>
-                            <a class="dropdown-item" href="post-ads.html">Ads Post</a>
-                            <a class="dropdown-item" href="pricing.html">Packages</a>
-                            <a class="dropdown-item" href="testimonial.html">Testimonial</a>
-                            <a class="dropdown-item" href="faq.html">FAQ</a>
-                            <a class="dropdown-item" href="404.html">404</a>
-                        </div>
-                    </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            Contact
-                        </a>
+                        <a class="nav-link" href="{{ route('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                     </li>
                 </ul>
 
@@ -96,12 +89,9 @@
 
         <ul class="mobile-menu">
             <li>
-                <a class="active" href="">
+                <a class="active" href="{{ url('/') }}">
                     Home
                 </a>
-            </li>
-            <li>
-                <a href="category.html">Categories</a>
             </li>
             <li>
                 <a href="#">
@@ -116,20 +106,9 @@
                     @endif
                 </ul>
             </li>
-            <li>
-                <a href="#">Pages</a>
-                <ul class="dropdown">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="post-ads.html">Ads Post</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="404.html">404</a></li>
-                </ul>
-            </li>
 
-            <li>
-                <a href="contact.html">Contact Us</a>
-            </li>
+            <li><a href="{{ route('about') }}">About</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
 
     </nav>
@@ -141,17 +120,17 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-9 col-xs-12 text-center">
                     <div class="contents">
-                        <h1 class="head-title">Welcome to The Largest <span class="year">Medical Diary</span></h1>
-                        <p>Buy and sell everything from used cars to mobile phones and computers, or search for
-                            property, jobs and more</p>
+                        <h1 class="head-title">Welcome to The Largest <span class="year">Hospital Diary</span></h1>
+                        <p>Search and find everything from ICU to medical tests, or search for
+                            oxygen cylinder and more</p>
                         <div class="search-bar">
                             <div class="search-inner">
-                                <form class="search-form">
+                                <form action="{{ route('search') }}" method="GET" class="search-form">
                                     <div class="form-group">
-                                        <input type="text" name="customword" class="form-control"
-                                            placeholder="What are you looking for?">
+                                        <input type="text" name="search" id="search" class="form-control"
+                                            placeholder="What are you looking for?" required>
                                     </div>
-                                    <button class="btn btn-common" type="button"><i class="lni-search"></i> Search
+                                    <button class="btn btn-common" type="submit"><i class="lni-search"></i> Search
                                         Now</button>
                                 </form>
                             </div>

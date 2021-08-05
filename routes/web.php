@@ -22,8 +22,15 @@ use App\Http\Controllers\DoctorController;
 Route::get('/ui', function () {
     return view('welcome');
 })->name('ui');
-Route::get('/', [HomeController::class, 'index']);
+
+//user interface
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/service/{id}', [HomeController::class, 'service']);
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+//end user interface
 
 
 Route::post('/admin_save', [AdminController::class, 'admin_save'])->name('auth.admin_save');
@@ -36,7 +43,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/admin_login', [AdminController::class, 'admin_login'])->name('auth.admin_login');
     Route::get('/admin_register', [AdminController::class, 'admin_register'])->name('auth.admin_register');
 
-    Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard']);
+    Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('admin.home');
     Route::get('/admin/settings',[AdminController::class,'admin_settings']);
     Route::get('/admin/profile',[AdminController::class,'admin_profile']);
     Route::get('/admin/staff',[AdminController::class,'admin_staff']);

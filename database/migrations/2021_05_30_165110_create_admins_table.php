@@ -15,13 +15,15 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->text('hospital_name');
-            $table->text('hospital_code');
-            $table->text('email');
-            $table->text('password');
-            $table->text('address');
-            $table->text('contact_no');
-            $table->text('is_active');
+            $table->string('admin_name',50);
+            $table->string('hospital_name',150);
+            $table->string('hospital_code',20);
+            $table->string('email',100)->unique();
+            $table->string('password',100);
+            $table->text('address')->nullable();
+            $table->string('contact_no',15);
+            $table->unsignedSmallInteger('role')->default('2');
+            $table->unsignedSmallInteger('is_active')->default('1');
             $table->timestamps();
         });
     }

@@ -3,83 +3,87 @@
 
 @section('content')
 
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Dashboard</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{ $doctors->count() }} <sup style="font-size: 15px">total</sup></h3>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ $doctors->count() }} <sup style="font-size: 15px">total</sup></h3>
 
-                            <a href="{{url('admin/doctor/create')}}" style="color: white"><p>Add Doctor</p></a>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                        <a href="{{url('admin/doctor')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{url('admin/doctor/create')}}" style="color: white">
+                            <p>Add Doctor</p>
+                        </a>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <a href="{{url('admin/doctor')}}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                @php
-                    
-                $class = ['bg-success','bg-warning','bg-info','bg-secondary','bg-primary','bg-muted','bg-danger'];
-                $classLength = count($class);
-                $i = 0;
-                @endphp
-                 
-                @foreach ($serviceDetails as $item)
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    
-                    <div class="small-box {{ $class[$i] }}">
+            </div>
+            @php
+
+            $class = ['bg-success','bg-warning','bg-info','bg-secondary','bg-primary','bg-muted','bg-danger'];
+            $classLength = count($class);
+            $i = 0;
+            @endphp
+
+            @foreach ($serviceDetails as $item)
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+
+                <div class="small-box {{ $class[$i] }}">
                     @php
-                        if ($i > $classLength-2){
-                            $i = 0;
-                        }
-                        else{ $i++; }
-                    @endphp 
+                    if ($i > $classLength-2){
+                    $i = 0;
+                    }
+                    else{ $i++; }
+                    @endphp
 
-                        <div class="inner">
-                            @if ($item==null)
-                                <h3>0</h3>
-                            @else
-                            <h3>{{ $item->available() }}</h3>
-                            @endif
+                    <div class="inner">
+                        @if ($item==null)
+                        <h3>0</h3>
+                        @else
+                        <h3>{{ $item->available() }}</h3>
+                        @endif
 
-                            <p>{{ $item->services->service_name}}</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-x-ray"></i>
-                        </div>
-                        <a href="{{ url('admin/serviceDetail') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <p>{{ $item->services->service_name}}</p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <a href="{{ url('admin/serviceDetail') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <!-- ./col -->
-                @endforeach
+            </div>
+            <!-- ./col -->
+            @endforeach
 
-                <!-- ./col -->
-                {{-- <div class="col-lg-3 col-6">
+            <!-- ./col -->
+            {{-- <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
@@ -93,10 +97,10 @@
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div> --}}
-                <!-- ./col -->
-            </div>
+            <!-- ./col -->
+        </div>
 
-            {{-- <div class="row">
+        {{-- <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
@@ -158,12 +162,12 @@
                 </div>
                 <!-- ./col -->
             </div> --}}
-            <!-- /.row -->
-            <!-- Main row -->
+        <!-- /.row -->
+        <!-- Main row -->
 
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 
 @endsection
