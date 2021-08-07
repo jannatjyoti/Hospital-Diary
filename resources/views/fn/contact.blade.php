@@ -72,8 +72,7 @@
                 <div class="information mb-6" style="min-height: 270px">
                     <h3>Address</h3>
                     <div class="contact-datails">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc metus lectus, viverra
-                            vehicula porta id, posuere at massa. Nam sollicitudin porta nunc.</p>
+                        <p>Dhaka, Bangladesh</p>
                     </div>
                 </div>
             </div>
@@ -84,15 +83,17 @@
                     <div class="contact-datails">
                         <ul class="list-unstyled info">
                             <li><span>Address : </span>
-                                <p> 9870 St Vincent Place, Glasgow, DC 45 Fr 45</p>
+                                <p> Dhaka, Bangladesh</p>
                             </li>
                             <li><span>Email : </span>
-                                <p><a href="#"><span class="__cf_email__"
-                                            data-cfemail="c0b3b5b0b0afb2b480ada1a9aceea3afad">[email&#160;protected]</span></a>
+                                <p>
+                                    hospitaldiary24@gmail.com
+                                    {{-- <a href="#"><span class="__cf_email__"
+                                            data-cfemail="c0b3b5b0b0afb2b480ada1a9aceea3afad">[email&#160;protected]</span></a> --}}
                                 </p>
                             </li>
                             <li><span>Phone : </span>
-                                <p>555 444 66647 & 555 444 66647</p>
+                                <p>+01612737015</p>
                             </li>
                         </ul>
                     </div>
