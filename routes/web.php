@@ -29,6 +29,8 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/service/{id}', [HomeController::class, 'service']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/doctor', [HomeController::class, 'doctor'])->name('doctors');
+Route::get('/hospital', [HomeController::class, 'hospital'])->name('hospitals');
 
 //end user interface
 
