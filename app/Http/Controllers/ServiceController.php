@@ -15,7 +15,7 @@ class ServiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('SuperAdmin')->except('index');
+        $this->middleware('SuperAdmin')->except(['store','create','index','import']);
         //$this->middleware('AuthCheck')->except(['index','create']);
     }
     /**
@@ -38,7 +38,6 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
         return view ('service.add', $data);
@@ -56,6 +55,9 @@ class ServiceController extends Controller
             'service_name'=> 'required'
         ]);
         $request->request->add(['admin_id' => session('LoggedUser')]);
+        if (session('role')=='1') {
+            $request->request->add(['is_active' => '1']);
+        }
         $data= $request->all();
         Service::create($data);
         return redirect('admin/service');
@@ -80,8 +82,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        
-        $service = Service::where('admin_id', session('LoggedUser'))->find($id);
+        $service = Service::find($id);
         $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
         return view('service.edit', $data)->with('service', $service);
     }
@@ -98,12 +99,12 @@ class ServiceController extends Controller
         $this->validate($request,[
             'service_name'=> 'required'
         ]);
-
         $service = Service::find($id);
-        $service->service_name = $request-> service_name;
+        $service->service_name = $request->service_name;
+        $service->is_active = $request->is_active;
         $service->save();
 
-        return redirect('admin/service');
+        return redirect('admin/service')->with('success','Service updated.');
     }
 
     /**

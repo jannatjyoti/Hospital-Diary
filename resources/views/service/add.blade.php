@@ -3,10 +3,10 @@
 
 @section('content')
 <div class="col-md-12">
-<!-- <div class="content-wrapper">  -->
-<div class="card card-info">
+  <!-- <div class="content-wrapper">  -->
+  <div class="card card-info">
 
-  <section class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -23,71 +23,63 @@
     </section>
 
     <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Service</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-              <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal">
-                @csrf
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="service_name" value="{{ old('service_name') }}" class="form-control" id="inputEmail3" placeholder="Service Name">
-                    </div>
-                  </div>
-                  
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-info">save</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-              
-              <div>
-                  <form method="post" enctype="multipart/form-data" action="{{ route('import') }}">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                      <table class="table">
-                        <tr>
-                          <td width="40%">
-                            <label>Select file for upload</label>
-                            <input type="file" name="select_file">
-                          </td>
-                          <td class="float-right">
-                            <input type="submit" name="upload" class="btn btn-primary" value="upload">
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                  </form>
-                </div>
+      <div class="card-header">
+        <h3 class="card-title">Add Service...</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
 
-                <br />
+      @if ($errors->any())
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+      <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal">
+        @csrf
+        <div class="card-body">
 
-                  </div>
-                </div>
+          <div class="form-group row">
+            <label for="service_name" class="col-sm-2 col-form-label">Service Name</label>
+            <div class="col-sm-8">
+              <input type="text" name="service_name" value="{{ old('service_name') }}" class="form-control"
+                id="service_name" placeholder="Service Name">
             </div>
-
-
-
-                <!-- /input-group -->
           </div>
-              <!-- /.card-body -->
+
+          @if (session('role') == '1')
+          <div class="form-group row">
+            <label for="is_active" style="margin: 5px 10px">Status</label>
+            <div class="col-sm-8">
+              <select style="margin: 5px 60px" name="is_active" class="custom-select" id="is_active">
+                <option>Select ...</option>
+                <option value="1">Active</option>
+                <option value="0">In-active</option>
+              </select>
+            </div>
+          </div>
+          @endif
+          <div class="card-footer">
+            <button class="btn btn-info">Save</button>
+          </div>
         </div>
+        <!-- /.card-body -->
+
+        <!-- /.card-footer -->
+      </form>
+    </div>
+
   </div>
-            <!-- </div> -->
+</div>
+
+<!-- /input-group -->
+</div>
+<!-- /.card-body -->
+</div>
+</div>
+<!-- </div> -->
 
 @endsection

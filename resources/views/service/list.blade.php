@@ -2,60 +2,65 @@
 @section('title',"Dashboard")
 
 @section('content')
- 
+
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title"><b>Service List</b></h3>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <table id="service_datatable" class="table table-hover">
-        <thead>
+  <div class="card-header">
+    <h3 class="card-title"><b>Service List</b></h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="service_datatable" class="table table-hover">
+      <thead>
         <tr>
           <th class="bg-primary">Service Name</th>
-      
+          <th class="bg-primary">Status</th>
+
           <th class="bg-primary">Option</th>
         </tr>
-        </thead>
-        <tbody>
-            @foreach ( $services as $service)
+      </thead>
+      <tbody>
+        @foreach ( $services as $service)
         <tr>
           <input type="hidden" class="servicedelete_val" value="{{ $service->id }}">
-          <td>{{ $service-> service_name }}</td>
-          
+          <td>{{ $service->service_name }}</td>
+          <td>{{ $service->is_active == 0 ? 'Inactive' : 'Active' }}</td>
+
           <td>
-                 <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-primary" >
-                <i class="fas fa-edit"></i> 
-                </a>
-                {{-- <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
-                  <i class="fas fa-trash-alt"></i>
-                </a> --}}
+            <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-primary">
+              <i class="fas fa-edit"></i>
+            </a>
+            {{-- <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')"
+            class="btn btn-danger" >
+            <i class="fas fa-trash-alt"></i>
+            </a> --}}
 
-                <button type="button" class=" btn btn-danger delete"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class=" btn btn-danger delete"><i class="fas fa-trash-alt"></i></button>
 
-            </td>
-          
-          
+          </td>
+
+
         </tr>
         @endforeach
-        
-        </tbody>
-        
-      </table>
-    </div>
-    <!-- /.card-body -->
+
+      </tbody>
+
+    </table>
   </div>
+  <!-- /.card-body -->
+</div>
 
 @endsection
 
 @push("page-js")
 <!-- DataTables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-  
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+  integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    $(function () {
+  $(function () {
     //   $("#example1").DataTable();
       $('#service_datatable').DataTable({
         "paging": true,
@@ -127,6 +132,6 @@ var data = {
    });
 
 
-  </script>
-    
+</script>
+
 @endpush

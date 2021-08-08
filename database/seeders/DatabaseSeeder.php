@@ -42,13 +42,13 @@ class DatabaseSeeder extends Seeder
             'contact_no' => '01700030303','role' => '2', 'is_active' => '1'],
         ]);
         DB::table('services')->insert([
-            ['service_name' => 'ICU', 'admin_id' => '1'],
-            ['service_name' => 'CCU', 'admin_id' => '1'],
-            ['service_name' => 'Oxygen Cylinder', 'admin_id' => '1'],
-            ['service_name' => 'Pulse Oxymeter', 'admin_id' => '1'],
-            ['service_name' => 'Blood Bank', 'admin_id' => '1'],
-            ['service_name' => 'Medical Tests', 'admin_id' => '1'],
-            ['service_name' => 'Ambulance', 'admin_id' => '1'],
+            ['service_name' => 'ICU', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'CCU', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'Oxygen Cylinder', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'Pulse Oxymeter', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'Blood Bank', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'Medical Tests', 'admin_id' => '1', 'is_active' => '1'],
+            ['service_name' => 'Ambulance', 'admin_id' => '1', 'is_active' => '1'],
         ]);
         // \App\Models\User::factory(10)->create();
         \App\Models\Doctor::factory(50)->create();

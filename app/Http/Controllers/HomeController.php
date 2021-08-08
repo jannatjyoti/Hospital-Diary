@@ -17,6 +17,7 @@ class HomeController extends Controller
     {
         $search = $request->input('search');
         $results = Service::where('service_name', 'LIKE', "%{$search}%")
+            ->where('is_active', "1")
             ->get();
 
         //$columns = Schema::getColumnListing('services');
@@ -34,7 +35,7 @@ class HomeController extends Controller
             }
         $doctors = $query->get();
 
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.searchres', compact('results','total_admin','services','hospitals','doctors','total_dr'));
@@ -44,7 +45,7 @@ class HomeController extends Controller
     {
         $hospitals = Admin::select('id','hospital_name','address','contact_no')->skip(1)->take(10)->get();
         
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         $doctors = Doctor::paginate(10);
@@ -54,7 +55,7 @@ class HomeController extends Controller
     public function doctor()
     {
         $doctors = Doctor::cursorPaginate(5)->fragment('doctors');
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.doctors', compact('services','doctors','total_admin','total_dr'));
@@ -63,7 +64,7 @@ class HomeController extends Controller
     public function hospital()
     {
         $hospitals = Admin::skip(1)->cursorPaginate(6)->fragment('hospitals');
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.hospitals', compact('services','hospitals','total_admin','total_dr'));
@@ -72,8 +73,8 @@ class HomeController extends Controller
     public function hos_details($id)
     {
         $hospital = Admin::find($id);
-        
-        $services= Service::get();
+
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.hosdetails', compact('services','hospital','total_admin','total_dr'));
@@ -91,7 +92,7 @@ class HomeController extends Controller
 
     public function about()
     {
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.about', compact('services','total_admin','total_dr'));
@@ -99,7 +100,7 @@ class HomeController extends Controller
 
     public function contact()
     {
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.contact', compact('services','total_admin','total_dr'));
