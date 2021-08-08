@@ -199,14 +199,14 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>
                   Settings
                 </p>
               </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a href="" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -215,14 +215,14 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
                 <p>
                   Staff Management
                 </p>
               </a>
-            </li>
+            </li> --}}
 
           </ul>
         </nav>
