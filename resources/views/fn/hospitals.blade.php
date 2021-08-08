@@ -53,7 +53,8 @@
                                 </div>
                                 <p class="dsc"><i class="lni-map-marker"></i> {{ $item->address }}</p>
                                 <div class="listing-bottom">
-                                    <a href="ads-details.html" class="btn btn-common float-right">View Details</a>
+                                    <a href="{{ url("hospital/$item->id") }}" class="btn btn-common float-right">View
+                                        Details</a>
                                 </div>
                             </div>
                         </div>

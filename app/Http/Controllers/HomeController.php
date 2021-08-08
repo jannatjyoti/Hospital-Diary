@@ -36,16 +36,19 @@ class HomeController extends Controller
 
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.searchres', compact('results','total_admin','services','hospitals','doctors'));
+        $total_dr = count(Doctor::get());
+        return view('fn.searchres', compact('results','total_admin','services','hospitals','doctors','total_dr'));
     }
 
     public function index()
     {
+        $hospitals = Admin::select('id','hospital_name','address','contact_no')->skip(1)->take(10)->get();
+        
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        $hospitals = Admin::select('hospital_name','address','contact_no')->get();
-        session(['services' => $services]);
-        return view('fn.index', compact('services','total_admin','hospitals'));
+        $total_dr = count(Doctor::get());
+        $doctors = Doctor::paginate(10);
+        return view('fn.index', compact('services','doctors','total_admin','hospitals','total_dr'));
     }
 
     public function doctor()
@@ -53,15 +56,27 @@ class HomeController extends Controller
         $doctors = Doctor::cursorPaginate(5)->fragment('doctors');
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.doctors', compact('services','doctors','total_admin'));
+        $total_dr = count(Doctor::get());
+        return view('fn.doctors', compact('services','doctors','total_admin','total_dr'));
     }
 
     public function hospital()
     {
-        $hospitals = Admin::cursorPaginate(6)->fragment('hospitals');
+        $hospitals = Admin::skip(1)->cursorPaginate(6)->fragment('hospitals');
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.hospitals', compact('services','hospitals','total_admin'));
+        $total_dr = count(Doctor::get());
+        return view('fn.hospitals', compact('services','hospitals','total_admin','total_dr'));
+    }
+    
+    public function hos_details($id)
+    {
+        $hospital = Admin::find($id);
+        
+        $services= Service::get();
+        $total_admin = count(Admin::get())-1;
+        $total_dr = count(Doctor::get());
+        return view('fn.hosdetails', compact('services','hospital','total_admin','total_dr'));
     }
 
     public function service($id)
@@ -70,21 +85,24 @@ class HomeController extends Controller
 
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.service', compact('service','services','total_admin'));
+        $total_dr = count(Doctor::get());
+        return view('fn.service', compact('service','services','total_admin','total_dr'));
     }
 
     public function about()
     {
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.about', compact('services','total_admin'));
+        $total_dr = count(Doctor::get());
+        return view('fn.about', compact('services','total_admin','total_dr'));
     }
 
     public function contact()
     {
         $services= Service::get();
         $total_admin = count(Admin::get())-1;
-        return view('fn.contact', compact('services','total_admin'));
+        $total_dr = count(Doctor::get());
+        return view('fn.contact', compact('services','total_admin','total_dr'));
     }
 
     public function update(Request $request, $id)

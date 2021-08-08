@@ -7,12 +7,7 @@
                     <ul class="list-inline">
                         <li><i class="lni-phone"></i> +01612737015</li>
                         <li><i class="lni-envelope"></i> hospitaldiary24@gmail.com
-                            
-                            {{-- <a href="http://preview.uideck.com/cdn-cgi/l/email-protection"
-                                class="__cf_email__"
-                                data-cfemail="fb888e8b8b94898fbb9c969a9297d5989496">[email&#160;protected]</a> --}}
-
-                            </li>
+                        </li>
                     </ul>
                 </div>
 
@@ -70,11 +65,9 @@
                             Services
                         </a>
                         <div class="dropdown-menu">
-                            @if(session()->has('services'))
-                            @foreach (session('services') as $item)
+                            @foreach ($services as $item)
                             <a class="dropdown-item" href="{{ url("service/$item->id") }}">{{ $item->service_name }}</a>
                             @endforeach
-                            @endif
                         </div>
                     </li>
                     <li class="nav-item">

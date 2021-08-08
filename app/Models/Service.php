@@ -10,6 +10,7 @@ class Service extends Model
     public function service_details(){
         return $this->hasMany('App\Models\ServiceDetail');
     }
+    
     public function total()
 	{
 		return $this->service_details->sum(function($service_details) {

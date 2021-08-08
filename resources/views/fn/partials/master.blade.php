@@ -62,7 +62,6 @@
     <script src="{{ asset('fn/js/form-validator.min.js') }}"></script>
     <script src="{{ asset('fn/js/contact-form-script.min.js') }}"></script>
     <script src="{{ asset('fn/js/summernote.js') }}"></script>
-    <script src="{{ asset('fn/js/pagination.min.js') }}"></script>
 
     @yield('scripts')
 </body>

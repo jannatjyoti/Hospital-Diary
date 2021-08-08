@@ -39,17 +39,6 @@
             </div>
             <div class="col-lg-9 col-md-12 col-xs-12 page-content">
 
-                {{--<div class="product-filter">
-                    <div class="short-name">
-                        <span>Showing (1 - 12 products of 7371 products)</span>
-                    </div>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#list-view"><i class="lni-list"></i></a>
-                        </li>
-                    </ul>
-                </div> --}}
-
                 <div class="adds-wrapper">
                     <div class="tab-content">
                         <div id="list-view" class="tab-pane fade active show">
@@ -89,7 +78,8 @@
                                                     <a href="#"><i class="lni-clipboard"></i>
                                                         {{ $item->specialized }}</a>
                                                 </p>
-                                                <a href="ads-details.html" class="btn btn-common float-right">View
+                                                <a data-toggle="modal" data-target="#drModal{{ $item->id }}" href=""
+                                                    class="btn btn-common float-right">View
                                                     Details</a>
                                             </div>
                                         </div>
@@ -102,20 +92,45 @@
                 </div>
 
                 {{ $doctors->links() }}
-                <!--<div class="pagination-bar">
-                    <nav>
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div> -->
 
             </div>
         </div>
     </div>
 </div>
+<!-- Doctor Modal -->
+@foreach ($doctors as $item)
+<div class="modal fade" id="drModal{{ $item->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Doctor Details
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-content">
+                    <h5><b>{{ $item->doctor_Name }}</b> <i class="lni-user"></i></h5>
 
+                    <p><i class="lni-clipboard"></i>Specialization: <b>{{ $item->specialized }}</b>
+                    </p>
+                    <p><i class="lni-graduation"></i>Degree: <b>{{ $item->degree }}</b></p>
+                    <p><i class="lni-certificate"></i>Designation: <b>{{ $item->designation }}</b></p>
+                    <a><i class="lni-map-marker"></i>Hospital: <b>{{ $item->hospital->hospital_name }}</b></a>
+                    <p><i class="lni-alarm-clock"></i>Chember Time: <b>{{ $item->chamber_time }}</b></p>
+                    <p><i class="lni-home"></i>Room No: <b>{{ $item->room_no }}</b></p>
+                    <p><i class="lni-phone"></i>Contact: <b>{{ $item->number }}</b></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END Doctor Modal -->
 @endsection

@@ -1,7 +1,7 @@
 <section class="counter-section section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6 work-counter-widget">
+            <div class="col-md-4 col-sm-12 work-counter-widget">
                 <div class="counter">
                     <div class="icon"><i class="lni-map"></i></div>
                     <h2 class="counterUp">{{ $total_admin }}</h2>
@@ -9,15 +9,15 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 work-counter-widget">
+            <div class="col-md-4 col-sm-12 work-counter-widget">
                 <div class="counter">
                     <div class="icon"><i class="lni-users"></i></div>
-                    <h2 class="counterUp">5487</h2>
-                    <p>Members</p>
+                    <h2 class="counterUp">{{ $total_dr }}</h2>
+                    <p>Doctors</p>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 work-counter-widget">
+            <div class="col-md-4 col-sm-12 work-counter-widget">
                 <div class="counter">
                     <div class="icon"><i class="lni-layers"></i></div>
                     <h2 class="counterUp">{{ count($services) }}</h2>
@@ -25,13 +25,6 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 work-counter-widget">
-                <div class="counter">
-                    <div class="icon"><i class="lni-briefcase"></i></div>
-                    <h2 class="counterUp">150</h2>
-                    <p>Medical Tests</p>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -88,7 +81,7 @@
                                 src="{{ asset('Image/logo.png') }}"></div>
                         <div class="textwidget">
 
-                             <p>Developed By</p>
+                            <p>Developed By</p>
                             <h3 class="block-title">Jannat Ara Jyoti</h3>
                             {{-- <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
                                 consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt consectetur,
@@ -118,7 +111,7 @@
                         <h3 class="block-title">Contact Info</h3>
                         <ul class="contact-footer">
                             <li>
-                                <strong><i class="lni-phone"></i></strong><span>+01612737015 
+                                <strong><i class="lni-phone"></i></strong><span>+01612737015
                                     {{-- <br> +1 555 444
                                     66647 --}}
                                 </span>
@@ -133,8 +126,8 @@
                                     <a href="http://preview.uideck.com/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="e4979194948b9690a489858d88ca878b89">[email&#160;protected]</a> --}}
-                                    
-                                    </span>
+
+                                </span>
                             </li>
                             <li>
                                 <strong><i class="lni-map-marker"></i></strong><span>
@@ -142,8 +135,8 @@
 
                                     {{-- <a href="#">9870 St Vincent Place,
                                         Glasgow, DC 45 <br>Fr 45</a> --}}
-                                    
-                                    </span>
+
+                                </span>
                             </li>
                         </ul>
                     </div>

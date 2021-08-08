@@ -2,7 +2,7 @@
 @section('title','Index')
 @section('contents')
 
-
+@if ($results->isNotEmpty())
 <section class="services section-padding">
     <div class="container">
         <h3 class="section-title">Services</h3>
@@ -40,25 +40,12 @@
             </div>
             @endif
             @endforeach
-
-            <!-- <div class="col-md-6 col-lg-4 col-xs-12">
-                <div class="services-item wow fadeInRight" data-wow-delay="0.4s">
-                    <div class="icon">
-                        <i class="lni-leaf"></i>
-                    </div>
-                    <div class="services-content">
-                        <h3><a href="#">Clean & Modern Design</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis
-                            repellat rerum assumenda facere.</p>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
     </div>
 </section>
+@endif
 
-
+@if ($hospitals->isNotEmpty())
 <section class="featured-lis section-padding">
     <div class="container">
         <div class="row">
@@ -99,8 +86,9 @@
         </div>
     </div>
 </section>
+@endif
 
-
+@if ($doctors->isNotEmpty())
 <section class="services section-padding">
     <div class="container">
         <h3 class="section-title">Doctors</h3>
@@ -147,4 +135,6 @@
         </div>
     </div>
 </section>
+@endif
+
 @endsection
