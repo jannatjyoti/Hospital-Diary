@@ -6,15 +6,6 @@
         <div class="row">
             <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                 <aside>
-                    {{--<div class="widget_search">
-                        <form role="search" id="search-form">
-                            <input type="search" class="form-control" autocomplete="off" name="s"
-                                placeholder="Search..." id="search-input" value="">
-                            <button type="submit" id="search-submit" class="search-btn"><i
-                                    class="lni-search"></i></button>
-                        </form>
-                    </div>--}}
-
                     <div class="widget categories">
                         <h4 class="widget-title">All Services</h4>
                         <ul class="categories-list">
@@ -39,17 +30,6 @@
             </div>
             <div class="col-lg-9 col-md-12 col-xs-12 page-content">
 
-                {{--<div class="product-filter">
-                    <div class="short-name">
-                        <span>Showing (1 - 12 products of 7371 products)</span>
-                    </div>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#list-view"><i class="lni-list"></i></a>
-                        </li>
-                    </ul>
-                </div> --}}
-
                 <div class="adds-wrapper">
                     <div class="tab-content">
                         <div id="list-view" class="tab-pane fade active show">
@@ -59,39 +39,39 @@
                                     <div class="featured-box">
                                         <figure>
                                             <span class="price-save">
-                                                10% Save
+                                                {{ $service->service_name }}
                                             </span>
-                                            <div class="icon">
-                                                <span class="bg-green"><i class="lni-heart"></i></span>
-                                                <span><i class="lni-bookmark"></i></span>
-                                            </div>
-                                            <a href="#"><img class="img-fluid"
-                                                    src="{{ asset('fn/img/featured/img-1.jpg') }}" alt=""></a>
+                                            <a href=""><img class="img-fluid"
+                                                    src="{{ asset('fn/img/featured/img-1.jpg') }}" alt=""
+                                                    style="height: 220px; width: 400px"></a>
                                         </figure>
-                                        <div class="feature-content">
+                                        <div class="feature-content" style="height: 220px; width: 400px">
                                             <div class="product">
-                                                <a href="#">{{ $service->service_name }} > </a>
+                                                <a>{{ $service->service_name }} > </a>
                                             </div>
-                                            <h4><a href="ads-details.html">{{ $item->hospital->hospital_name }}</a></h4>
+                                            <h4><a>{{ $item->hospital->hospital_name }}</a>
+                                            </h4>
                                             <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-cloud"></i> Total:
+                                                <h6>
+                                                    <a><i class="lni-cloud"></i> Total:
                                                         {{ $item->total }}</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-cloud-sync"></i>Running:
+                                                </h6>
+                                                <h6>
+                                                    <a><i class="lni-cloud-sync"></i> Running:
                                                         {{ $item->running }}</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-cloud-check"></i> Available:
+                                                </h6>
+                                                <h6>
+                                                    <a><i class="lni-cloud-check"></i> Available:
                                                         {{ $item->available() }}</a>
-                                                </span>
+                                                </h6>
                                             </div>
-                                            <p class="dsc">Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum has been the industry.</p>
                                             <div class="listing-bottom">
-                                                <h3 class="price float-left">$249.00</h3>
-                                                <a href="ads-details.html" class="btn btn-common float-right">View
+                                                <p class="float-left">
+                                                    <a href="#"><i class="lni-home"></i>
+                                                        {{ $item->hospital->address }}</a>
+                                                </p>
+                                                <a data-toggle="modal" data-target="#drModal{{ $item->id }}" href=""
+                                                    class="btn btn-common float-right">View
                                                     Details</a>
                                             </div>
                                         </div>
@@ -102,22 +82,44 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!--<div class="pagination-bar">
-                    <nav>
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div> -->
-
             </div>
         </div>
     </div>
 </div>
+
+<!-- Service Modal -->
+@foreach ($service->service_details as $item)
+<div class="modal fade" id="drModal{{ $item->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Service Details
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-content">
+                    <h4>{{ $service->service_name }} <i class="lni-cog"></i></h4>
+
+                    <p><i class="lni-cloud"></i>Total: <b>{{ $item->total }}</b></p>
+                    <p><i class="lni-cloud-sync"></i>Running: <b>{{ $item->running }}</b></p>
+                    <p><i class="lni-cloud-check"></i>Available: <b>{{ $item->available() }}</b></p>
+                    <a><i class="lni-home"></i>Hospital: <b>{{ $item->hospital->hospital_name }}</b></a>
+                    <p><i class="lni-map-marker"></i>Address: <b>{{ $item->hospital->address }}</b></p>
+                    <p><i class="lni-phone"></i>Contact: <b>{{ $item->hospital->contact_no }}</b></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END Service Modal -->
 
 @endsection
