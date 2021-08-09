@@ -17,9 +17,8 @@
                     </div>
                     <div class="services-content">
                         <h3><a href="#">{{ $item->service_name }} | {{ $details->hospital->hospital_name }}</a></h3>
-                        <p>Total: <b>{{ $details->total }}</b></p>
-                        <p>Running: <b>{{ $details->running }}</b></p>
                         <p>Available: <b>{{ $details->available() }}</b></p>
+                        <p>Address: <b>{{ $details->hospital->address }}</b></p>
                     </div>
                     <a data-toggle="modal" data-target="#serviceModal{{ $item->id }}" href=""
                         class="btn btn-common float-right">View

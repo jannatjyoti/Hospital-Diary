@@ -14,7 +14,7 @@
                                 <a href="{{ url("service/$item->id") }}">
                                     <i class="lni-control-panel"></i>
                                     {{ $item->service_name }} <span
-                                        class="category-counter">({{ $item->total() }})</span>
+                                        class="category-counter">({{ $item->available() }})</span>
                                 </a>
                             </li>
                             @endforeach

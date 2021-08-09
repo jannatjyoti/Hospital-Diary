@@ -30,11 +30,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ $doctors->count() }} <sup style="font-size: 15px">total</sup></h3>
-
-                        <a href="{{url('admin/doctor/create')}}" style="color: white">
-                            <p>Add Doctor</p>
-                        </a>
+                        <h3>{{ $doctors->count() }} <sup style="font-size: 15px"></sup></h3>
+                        <p>Doctors</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-md"></i>
