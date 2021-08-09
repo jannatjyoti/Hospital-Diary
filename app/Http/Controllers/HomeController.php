@@ -84,7 +84,7 @@ class HomeController extends Controller
     {
         $service = Service::find($id);
 
-        $services= Service::get();
+        $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.service', compact('service','services','total_admin','total_dr'));

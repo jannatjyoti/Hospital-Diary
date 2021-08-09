@@ -130,7 +130,7 @@
                 <li class="nav-item">
                   <a href="{{url('admin/service/create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add New Service</p>
+                    <p>Add Service</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -146,7 +146,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-concierge-bell"></i>
                 <p>
-                  Service Detail
+                  Service Details
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -170,11 +170,8 @@
             <li class="nav-item menu-close">
               <a href="#" class="nav-link ">
                 <!-- <i class="nav-icon fas fa-concierge-bell"></i> -->
-                <i class="fa fa-user-md" aria-hidden="true"></i>
-                <p>
-                  Doctor Management
-                  <i class="right fas fa-angle-left"></i>
-                </p>
+                <i class="nav-icon fa fa-user-md" aria-hidden="true"></i>
+                <p> Doctor Management <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">

@@ -17,4 +17,16 @@ class Service extends Model
       return $service_details->total;
     });
 	}
+    
+    public function running()
+	{
+		return $this->service_details->sum(function($service_details) {
+      return $service_details->running;
+    });
+	}
+    
+    public function available()
+	{
+		return $this->total() - $this->running();
+    }
 }
