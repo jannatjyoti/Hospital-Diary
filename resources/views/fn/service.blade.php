@@ -70,8 +70,8 @@
                                                     <a href="#"><i class="lni-home"></i>
                                                         {{ $item->hospital->address }}</a>
                                                 </p>
-                                                <a data-toggle="modal" data-target="#drModal{{ $item->id }}" href=""
-                                                    class="btn btn-common float-right">View
+                                                <a data-toggle="modal" data-target="#serviceModal{{ $item->id }}"
+                                                    href="" class="btn btn-common float-right">View
                                                     Details</a>
                                             </div>
                                         </div>
@@ -89,7 +89,7 @@
 
 <!-- Service Modal -->
 @foreach ($service->service_details as $item)
-<div class="modal fade" id="drModal{{ $item->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="serviceModal{{ $item->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
