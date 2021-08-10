@@ -155,7 +155,7 @@
 
 
 <!-- How it works -->
-<section class="works section-padding">
+{{-- <section class="works section-padding">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -233,8 +233,7 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-</section>
+</section> --}}
 
 @endsection

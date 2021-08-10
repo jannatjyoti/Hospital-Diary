@@ -42,34 +42,35 @@
                                                 {{ $service->service_name }}
                                             </span>
                                             <a href=""><img class="img-fluid"
-                                                    src="{{ asset('fn/img/featured/img-1.jpg') }}" alt=""
+                                                    src="{{ asset('fn/img/featured/service2.jpg') }}" alt=""
                                                     style="height: 220px; width: 400px"></a>
                                         </figure>
-                                        <div class="feature-content" style="height: 220px; width: 400px">
+                                        <div class="feature-content" style="height: 220px; width: 300px">
                                             <div class="product">
-                                                <a>{{ $service->service_name }} > </a>
+                                                <a> > </a>
                                             </div>
-                                            <h4><a>{{ $item->hospital->hospital_name }}</a>
+                                            <h4><a>{{ $service->service_name }} | {{ $item->hospital->hospital_name }}</a>
                                             </h4>
                                             <div class="meta-tag">
-                                                <h6>
+                                                {{-- <h6>
                                                     <a><i class="lni-cloud"></i> Total:
                                                         {{ $item->total }}</a>
-                                                </h6>
-                                                <h6>
-                                                    <a><i class="lni-cloud-sync"></i> Running:
-                                                        {{ $item->running }}</a>
-                                                </h6>
+                                                </h6> --}}
+                                                
                                                 <h6>
                                                     <a><i class="lni-cloud-check"></i> Available:
                                                         {{ $item->available() }}</a>
                                                 </h6>
+                                                <h6>
+                                                    <a><i class="lni-cloud-sync"></i> Hospital Address:
+                                                        {{ $item->hospital->address }}</a>
+                                                </h6>
                                             </div>
                                             <div class="listing-bottom">
-                                                <p class="float-left">
+                                                {{-- <p class="float-left">
                                                     <a href="#"><i class="lni-home"></i>
                                                         {{ $item->hospital->address }}</a>
-                                                </p>
+                                                </p> --}}
                                                 <a data-toggle="modal" data-target="#serviceModal{{ $item->id }}"
                                                     href="" class="btn btn-common float-right">View
                                                     Details</a>
