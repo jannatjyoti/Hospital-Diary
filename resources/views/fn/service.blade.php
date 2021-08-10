@@ -41,9 +41,8 @@
                                             <span class="price-save">
                                                 {{ $service->service_name }}
                                             </span>
-                                            <a href=""><img class="img-fluid"
-                                                    src="{{ asset('fn/img/featured/img-1.jpg') }}" alt=""
-                                                    style="height: 220px; width: 400px"></a>
+                                            <a href=""><img class="img-fluid" src="{{ asset($service->image_url) }}"
+                                                    alt="" style="height: 220px; width: 400px"></a>
                                         </figure>
                                         <div class="feature-content" style="height: 220px; width: 400px">
                                             <div class="product">

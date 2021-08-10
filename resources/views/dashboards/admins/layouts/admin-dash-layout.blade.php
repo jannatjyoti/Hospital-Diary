@@ -263,6 +263,23 @@
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
     $.widget.bridge('uibutton', $.ui.button)
+
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+        $('#view_img').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+        }
+        }
+        
+        $("#image").change(function(){
+        readURL(this);
+        $("#view_img_div").removeAttr('hidden');
+        });
   </script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
