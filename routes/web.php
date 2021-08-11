@@ -48,12 +48,12 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
     Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('admin.home');
     Route::get('/admin/settings',[AdminController::class,'admin_settings']);
-    Route::get('/admin/profile',[AdminController::class,'admin_profile']);
-    Route::get('/admin/staff',[AdminController::class,'admin_staff']);
+    Route::get('/admin/profile',[AdminController::class,'profile'])->name('update_profile');
+    Route::get('/admin/changepw',[AdminController::class,'changepw'])->name('changepw');
     Route::resource('/admin/service', ServiceController::class);
     Route::resource('/admin/doctor', DoctorController::class);
+    Route::resource('/admin/hospital', AdminController::class);
     Route::get('/admin/doctor/delete/{doctor}', [DoctorController::class,'delete']);
-    Route::resource('admin/service', ServiceController::class);
     Route::get('/admin/service/delete/{service}', [ServiceController::class,'delete']);
     Route::resource('/admin/serviceDetail', ServiceDetailController::class);
     Route::get('/admin/serviceDetail/delete/{serviceDetail}', [ServiceDetailController::class,'delete']);

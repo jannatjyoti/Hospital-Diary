@@ -1,5 +1,5 @@
 @extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title',"Dashboard")
+@section('title',"Services")
 
 @section('content')
 
@@ -7,7 +7,7 @@
   <div class="card-header">
     <h3 class="card-title"><b>Service List</b></h3>
     <a href="{{url('admin/service/create')}}"><button type="submit"
-      class="col-1 btn-outline-info  float-right">Add</button></a>
+        class="col-1 btn-outline-info  float-right">Add</button></a>
   </div>
   <!-- /.card-header -->
   <div class="card-body">

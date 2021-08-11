@@ -85,8 +85,6 @@ class DoctorController extends Controller
         $doctor->image_url = $image_url;
         $result = $doctor->save();
         return ($result) ? redirect('admin/doctor')->with('success','Doctor added') : redirect('admin/doctor')->with('error','Failed');
-
-        return redirect('admin/doctor');
     }
 
     /**
@@ -168,7 +166,6 @@ class DoctorController extends Controller
      */
     public function delete($id)
     {
-        // return $id;
         $doctor = Doctor::find($id);
         $doctor->delete();
         return redirect ('admin/doctor');

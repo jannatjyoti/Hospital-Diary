@@ -73,7 +73,7 @@ class AdminController extends Controller
             'password'=>'required|min:5|max:12',
             'address'=>'required',
             'contact_no'=>'required',
-            'image_url'=>'required',
+            'image'=>'required',
         ]);
         
         // insert data into database
@@ -86,7 +86,7 @@ class AdminController extends Controller
         $admin->address = $request->address;
         $admin->contact_no = $request->contact_no;
         
-        $image_url = $this->uploadImage($request->image,'service');
+        $image_url = $this->uploadImage($request->image,'hospital');
         $admin->image_url = $image_url;
 
         $save = $admin->save();
@@ -140,9 +140,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function profile()
     {
-        //
+        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+
+        $hospital= Admin::find(session('LoggedUser'));
+        return view('hospital.edit',$data, compact('hospital'));
     }
 
     /**
@@ -165,7 +168,28 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'hospital_name'=>'required',
+            //'password'=>'required|min:5|max:12',
+            //'old_password' => 'password',
+            'address'=>'required',
+            'contact_no'=>'required|max:15',
+        ]);
+        $hospital = Admin::find($id);
+        $hospital->hospital_name = $request->hospital_name;
+        $hospital->address = $request->address;
+        $hospital->contact_no = $request->contact_no;
+        if ($request->image_url) {
+            $old_img_path = $hospital->image_url;
+            if(File::exists($old_img_path)){
+                unlink($old_img_path);
+            }
+            $image_url = $this->uploadImage($request->image,'hospital');
+            $hospital->image_url = $image_url;
+        }
+
+        $hospital->save();
+        return back()->with('success','Hospital info updated.');
     }
 
     /**
@@ -174,8 +198,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function changepw($id)
     {
-        //
+        
     }
 }

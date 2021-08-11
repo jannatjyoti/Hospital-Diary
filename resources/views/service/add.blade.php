@@ -1,5 +1,5 @@
 @extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title',"Dashboard")
+@section('title',"Add Service")
 
 @section('content')
 <div class="col-md-12">
