@@ -7,10 +7,29 @@ use App\Models\Admin;
 use App\Models\Doctor;
 use App\Models\ServiceDetail;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\facades\Hash;
 
 class AdminController extends Controller
 {
+    
+    public function uploadImage($image,$path)
+    {
+        $image_name = Str::random(20);
+        $ext = strtolower($image->getClientOriginalExtension());
+        $image_full_name = $image_name.'.'.$ext;
+        $upload_path = 'Image/'.$path.'/';
+        $image_url = $upload_path.$image_full_name;
+        $success = $image->move(public_path($upload_path), $image_full_name);
+        if ($success) {
+            return $image_url;
+        }
+        else{
+            return '500';
+        }
+    }
+  
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +73,7 @@ class AdminController extends Controller
             'password'=>'required|min:5|max:12',
             'address'=>'required',
             'contact_no'=>'required',
+            'image_url'=>'required',
         ]);
         
         // insert data into database
@@ -65,6 +85,9 @@ class AdminController extends Controller
         $admin->password = Hash::make($request->password);
         $admin->address = $request->address;
         $admin->contact_no = $request->contact_no;
+        
+        $image_url = $this->uploadImage($request->image,'service');
+        $admin->image_url = $image_url;
 
         $save = $admin->save();
         if($save){

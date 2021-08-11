@@ -32,13 +32,10 @@
             <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-primary">
               <i class="fas fa-edit"></i>
             </a>
-            {{-- <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')"
-            class="btn btn-danger" >
-            <i class="fas fa-trash-alt"></i>
-            </a> --}}
-
-            <button type="button" class=" btn btn-danger delete"><i class="fas fa-trash-alt"></i></button>
-
+            <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')"
+              class="btn btn-danger">
+              <i class="fas fa-trash-alt"></i>
+            </a>
           </td>
 
 

@@ -1,5 +1,5 @@
 @extends('fn.partials.master')
-@section('title','Index')
+@section('title','Hospital info')
 @section('contents')
 
 <section class="services section-padding">

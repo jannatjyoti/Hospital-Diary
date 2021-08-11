@@ -42,7 +42,8 @@
                     <div class="item">
                         <div class="product-item">
                             <div class="carousel-thumb">
-                                <img class="img-fluid" src="{{ asset('fn/img/hospitals/hos01.jpg') }}" alt="">
+                                <img class="img-fluid" src="{{ asset($item->image_url) }}"
+                                    style="height: 220px; width: 400px">
                                 <div class="overlay">
                                     <div>
                                         <a class="btn btn-common" href="{{ url("hospital/$item->id") }}">View
@@ -85,7 +86,8 @@
                     <div class="item">
                         <div class="product-item">
                             <div class="carousel-thumb">
-                                <img class="img-fluid" src="{{ asset('fn/img/hospitals/doc01.jpg') }}" alt="">
+                                <img class="img-fluid" src="{{ asset($item->image_url) }}" alt=""
+                                    style="height: 220px; width: 400px">
                                 <div class="overlay">
                                     <div>
                                         <a class="btn btn-common" data-toggle="modal"

@@ -1,5 +1,5 @@
 @extends('fn.partials.master')
-@section('title','Service')
+@section('title','Contact')
 @section('contents')
 
 {{--<section id="google-map-area">

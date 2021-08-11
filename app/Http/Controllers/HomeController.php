@@ -56,6 +56,19 @@ class HomeController extends Controller
     {
         $doctors = Doctor::cursorPaginate(5)->fragment('doctors');
         $services= Service::where('is_active', "1")->get();
+
+        $designation = ['Intern','Professor','Asst. Professor','Associate Professor'];
+        $specialized = ['Medicine','Kidney','Neuromedicine','Gestoentrology','E & T'];
+        foreach ($designation as $item) {
+            $count= count(Doctor::where('designation', $item)->get());
+            session([$item => $count]);
+        }
+        foreach ($specialized as $item) {
+            $count= count(Doctor::where('specialized', $item)->get());
+            session([$item => $count]);
+        }
+        
+
         $total_admin = count(Admin::get())-1;
         $total_dr = count(Doctor::get());
         return view('fn.doctors', compact('services','doctors','total_admin','total_dr'));

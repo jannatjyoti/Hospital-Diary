@@ -19,7 +19,7 @@ class CreateServicesTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete("cascade");
             $table->unsignedSmallInteger('is_active')->default('0');
-            $table->string('image_url');
+            $table->string('image_url',100);
             $table->timestamps();
         });
     }

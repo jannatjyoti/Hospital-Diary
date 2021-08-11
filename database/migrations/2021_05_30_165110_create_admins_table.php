@@ -22,6 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('password',100);
             $table->text('address')->nullable();
             $table->string('contact_no',15);
+            $table->string('image_url',100);
             $table->unsignedSmallInteger('role')->default('2');
             $table->unsignedSmallInteger('is_active')->default('1');
             $table->timestamps();

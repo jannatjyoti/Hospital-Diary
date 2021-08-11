@@ -6,34 +6,35 @@
         <div class="row">
             <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                 <aside>
-                    {{--<div class="widget_search">
-                        <form role="search" id="search-form">
-                            <input type="search" class="form-control" autocomplete="off" name="s"
-                                placeholder="Search..." id="search-input" value="">
-                            <button type="submit" id="search-submit" class="search-btn"><i
-                                    class="lni-search"></i></button>
-                        </form>
-                    </div>--}}
-
+                    @php
+                    $designation = ['Intern','Professor','Asst. Professor','Associate Professor'];
+                    $specialized = ['Medicine','Kidney','Neuromedicine','Gestoentrology','E & T'];
+                    @endphp
                     <div class="widget categories">
-                        <h4 class="widget-title">All Services</h4>
+                        <h4 class="widget-title">Specialised</h4>
                         <ul class="categories-list">
-                            @foreach ($services as $item)
+                            @foreach ($specialized as $item)
                             <li>
-                                <a href="#">
+                                <a href="">
                                     <i class="lni-control-panel"></i>
-                                    {{ $item->service_name }} <span
-                                        class="category-counter">({{ $item->total() }})</span>
+                                    {{ $item }} <span class="category-counter">({{ session($item) }})</span>
                                 </a>
                             </li>
                             @endforeach
                         </ul>
                     </div>
-                    <div class="widget">
-                        <h4 class="widget-title">Advertisement</h4>
-                        <div class="add-box">
-                            <img class="img-fluid" src="{{ asset('fn/img/img1.jpg') }}" alt="">
-                        </div>
+                    <div class="widget categories">
+                        <h4 class="widget-title">Designation</h4>
+                        <ul class="categories-list">
+                            @foreach ($designation as $item)
+                            <li>
+                                <a href="">
+                                    <i class="lni-control-panel"></i>
+                                    {{ $item }} <span class="category-counter">({{ session($item) }})</span>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </aside>
             </div>
@@ -51,22 +52,22 @@
                                                 {{ $item->doctor_Name }}
                                             </span>
 
-                                            <a href="#"><img class="img-fluid"
-                                                    src="{{ asset('fn/img/hospitals/doc01.jpg') }}" alt=""></a>
+                                            <a href=""><img class="img-fluid" src="{{ asset($item->image_url) }}" alt=""
+                                                    style="height: 220px; width: 400px"></a>
                                         </figure>
                                         <div class="feature-content">
                                             <div class="product">
                                                 <a href="">{{ $item->hospital->hospital_name }} <i class="lni-home"></i>
                                                 </a>
                                             </div>
-                                            <h4><a href="ads-details.html">{{ $item->doctor_Name }}</a></h4>
+                                            <h4><a href="">{{ $item->doctor_Name }}</a></h4>
                                             <div class="meta-tag">
                                                 <span>
-                                                    <a href="#"><i class="lni-licencse"></i> {{ $item->designation }}
+                                                    <a href=""><i class="lni-licencse"></i> {{ $item->designation }}
                                                     </a>
                                                 </span>
                                                 <span>
-                                                    <a href="#"><i class="lni-graduation"></i>{{ $item->degree }}
+                                                    <a href=""><i class="lni-graduation"></i>{{ $item->degree }}
                                                     </a>
                                                 </span>
 
@@ -75,7 +76,7 @@
                                                 typesetting industry. Lorem Ipsum has been the industry.</p>
                                             <div class="listing-bottom">
                                                 <p class="float-left">
-                                                    <a href="#"><i class="lni-clipboard"></i>
+                                                    <a href=""><i class="lni-clipboard"></i>
                                                         {{ $item->specialized }}</a>
                                                 </p>
                                                 <a data-toggle="modal" data-target="#drModal{{ $item->id }}" href=""

@@ -3,7 +3,10 @@
 
 @section('content')
 <div class="col-md-12">
-  <!-- <div class="content-wrapper">  -->
+  @php
+  $designation = ['Intern','Professor','Asst. Professor','Associate Professor'];
+  $specialized = ['Medicine','Kidney','Neuromedicine','Gestoentrology','E & T'];
+  @endphp
   <div class="card card-info">
     <section class="content-header">
       <div class="container-fluid">
@@ -37,7 +40,7 @@
         </ul>
       </div>
       @endif
-      <form action="{{url('admin/doctor')}}" method="post" class="form-horizontal">
+      <form action="{{url('admin/doctor')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
           <div class="form-group row">
@@ -54,16 +57,14 @@
                 placeholder="enter email address">
             </div>
           </div>
-
           <div class="form-group row">
             <label for="designation" class="col-sm-2 col-form-label">Designation</label>
             <div class="col-sm-10">
               <select name="designation" id="designation" class="form-control">
                 <option value="">Select...</option>
-                <option value="Intern">Intern</option>
-                <option value="Asst. Professor">Asst. Professor</option>
-                <option value="Associate Professor">Associate Professor</option>
-                <option value="Professor">Professor</option>
+                @foreach ($designation as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
               </select>
             </div>
 
@@ -79,9 +80,14 @@
           <div class="form-group row">
             <label for="specialized" class="col-sm-2 col-form-label">Specialized</label>
             <div class="col-sm-10">
-              <input type="text" name="specialized" value="{{ old('specialized') }}" class="form-control"
-                id="specialized" placeholder="enter specialized">
+              <select name="specialized" id="specialized" class="form-control">
+                <option value="">Select...</option>
+                @foreach ($specialized as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
+              </select>
             </div>
+
           </div>
 
           <div class="form-group row">
@@ -103,6 +109,20 @@
             <div class="col-sm-10">
               <input type="text" name="room_no" value="{{ old('room_no') }}" class="form-control" id="room_no"
                 placeholder="enter room no">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+              <input type="file" name="image" value="{{ old('image') }}" class="form-control" id="image"
+                accept="image/*" placeholder="select image">
+            </div>
+          </div>
+          <div id="view_img_div" class="form-group row" hidden>
+            <label class="col-sm-2 col-form-label">View Image</label>
+            <div class="col-sm-10">
+              <img id="view_img" style="max-height: 150px; max-width: 220px" />
             </div>
           </div>
 

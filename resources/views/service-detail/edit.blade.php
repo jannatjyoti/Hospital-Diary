@@ -34,24 +34,24 @@
         <div class="card-body">
 
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
+            <label for="service_name" class="col-sm-2 col-form-label">Service Name</label>
             <div class="col-sm-8">
               <input type="text" name="service_name" value="{{ $serviceDetails->services->service_name }}"
-                class="form-control" id="inputEmail3" disabled>
+                class="form-control" id="service_name" disabled>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Total Service</label>
+            <label for="total" class="col-sm-2 col-form-label">Total Service</label>
             <div class="col-sm-8">
-              <input type="text" name="total" value="{{ $serviceDetails-> total }}" class="form-control"
-                id="inputEmail3" placeholder="Service Name">
+              <input type="number" name="total" value="{{ $serviceDetails->total }}" class="form-control" id="total"
+                placeholder="total service">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Running Service</label>
+            <label for="running" class="col-sm-2 col-form-label">Running Service</label>
             <div class="col-sm-8">
-              <input type="text" name="running" value="{{ $serviceDetails-> running }}" class="form-control"
-                id="inputEmail3" placeholder="Service Name">
+              <input type="number" name="running" value="{{ $serviceDetails->running }}" class="form-control"
+                id="running" placeholder="running service">
             </div>
           </div>
 
@@ -59,7 +59,6 @@
         <!-- /.card-body -->
         <div class="card-footer">
           <button type="submit" class="btn btn-info">Update</button>
-          <button type="submit" class="btn btn-default float-right">Cancel</button>
         </div>
         <!-- /.card-footer -->
       </form>

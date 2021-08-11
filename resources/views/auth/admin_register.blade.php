@@ -31,7 +31,7 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_pa
       <div class="card-body register-card-body">
         <h5 class="login-box-msg"><b>Register a new membership</b></h5>
 
-        <form action="{{ route('auth.admin_save') }}" method="post">
+        <form action="{{ route('auth.admin_save') }}" method="post" enctype="multipart/form-data">
           @if(Session::get('success'))
           <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -117,6 +117,22 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_pa
               </div>
             </div>
           </div>
+
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="image" name="image" placeholder="select image"
+              value="{{ old('image') }}" accept="image/*">
+            <span class="text-danger">@error('image'){{ $message }} @enderror</span>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <i class="fas fa-hospital"></i>
+              </div>
+            </div>
+          </div>
+          <div id="view_img_div" class="input-group mb-3" hidden>
+            <img id="view_img" style="max-height: 150px; width: 100%" />
+          </div>
+
+
           <div class="row">
             <div class="col-4" style="margin-left: 50px">
               <a href="{{ url("admin_login") }}" class="btn btn-primary btn-block btn-flat">Sign In</a>
@@ -145,6 +161,25 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_pa
   <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../dist/js/adminlte.min.js"></script>
+
+  <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+      $('#view_img').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#image").change(function(){
+    readURL(this);
+    $("#view_img_div").removeAttr('hidden');
+    });
+  </script>
 </body>
 
 </html>

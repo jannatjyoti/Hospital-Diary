@@ -125,7 +125,6 @@ class ServiceController extends Controller
         if(File::exists($old_img_path)){
             unlink($old_img_path);
         }
-        
         $image_url = $this->uploadImage($request->image,'service');
         $service->image_url = $image_url;
 

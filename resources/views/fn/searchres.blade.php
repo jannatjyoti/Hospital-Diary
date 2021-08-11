@@ -95,7 +95,8 @@
                     <div class="item">
                         <div class="product-item">
                             <div class="carousel-thumb">
-                                <img class="img-fluid" src="{{ asset('fn/img/hospitals/hos01.jpg') }}" alt="">
+                                <img class="img-fluid" src="{{ asset($item->image_url) }}" alt=""
+                                    style="height: 220px; width: 400px">
                                 <div class="overlay">
                                     <div>
                                         <a class="btn btn-common" href="{{ url("hospital/$item->id") }}">View
@@ -141,18 +142,18 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="featured-box">
                                     <figure>
-                                        <a href="#"><img class="img-fluid"
-                                                src="{{ asset('fn/img/hospitals/doc01.jpg') }}" alt="">
+                                        <a href=""><img class="img-fluid" src="{{ asset($item->image_url) }}"
+                                                style="height: 220px; width: 400px">
                                         </a>
                                     </figure>
                                     <div class="feature-content col-12">
-                                        <h4><a href="ads-details.html">{{ $item->doctor_Name }}</a></h4>
+                                        <h4><a href="">{{ $item->doctor_Name }}</a></h4>
                                         <div class="meta-tag">
                                             <span>
                                                 <a href=""><i class="lni-licencse"></i> {{ $item->designation }}</a>
                                             </span>
                                             <span>
-                                                <a href="#"><i class="lni-clipboard"></i> {{ $item->specialized }}</a>
+                                                <a href=""><i class="lni-clipboard"></i> {{ $item->specialized }}</a>
                                             </span>
                                             <span>
                                                 <a href=""><i class="lni-licencse"></i> {{ $item->degree }}</a>

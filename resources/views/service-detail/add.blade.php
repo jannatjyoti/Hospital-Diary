@@ -50,24 +50,24 @@
               <select style="margin: 5px 60px" name="service_id" class="custom-select">
                 <option value="">Select...</option>
                 @foreach ($services as $key => $value)
-                <option value="{{ $value->id }}">{{ $value-> service_name }} </option>
+                <option value="{{ $value->id }}">{{ $value->service_name }} </option>
 
                 @endforeach
               </select>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Total Service</label>
+            <label for="total" class="col-sm-2 col-form-label">Total Service</label>
             <div class="col-sm-8">
-              <input type="text" name="total" value="{{ old('total') }}" class="form-control" id="inputEmail3"
-                placeholder="Service Name">
+              <input type="number" name="total" value="{{ old('total') }}" class="form-control" id="total"
+                placeholder="total service">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Running Service</label>
+            <label for="running" class="col-sm-2 col-form-label">Running Service</label>
             <div class="col-sm-8">
-              <input type="text" name="running" value="{{ old('running') }}" class="form-control" id="inputEmail3"
-                placeholder="Service Name">
+              <input type="number" name="running" value="{{ old('running') }}" class="form-control" id="running"
+                placeholder="running service">
             </div>
           </div>
 
@@ -75,7 +75,6 @@
         <!-- /.card-body -->
         <div class="card-footer">
           <button type="submit" class="btn btn-info">save</button>
-          <button type="submit" class="btn btn-default float-right">Cancel</button>
         </div>
         <!-- /.card-footer -->
       </form>

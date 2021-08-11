@@ -37,18 +37,18 @@
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                         <div class="featured-box">
                             <figure>
-                                <a href="#"><img class="img-fluid" src="{{ asset('fn/img/hospitals/hos01.jpg') }}"
-                                        alt=""></a>
+                                <a href="#"><img class="img-fluid" src="{{ asset($item->image_url) }}" alt=""
+                                        style="height: 220px; width: 400px"></a>
                             </figure>
                             <div class="feature-content col-12">
 
-                                <h4><a href="ads-details.html">{{ $item->hospital_name }}</a></h4>
+                                <h4><a href="">{{ $item->hospital_name }}</a></h4>
                                 <div class="meta-tag">
                                     <span>
-                                        <a href="#"><i class="lni-user"></i> {{ $item->contact_no }}</a>
+                                        <a href=""><i class="lni-user"></i> {{ $item->contact_no }}</a>
                                     </span>
                                     <span>
-                                        <a href="#"><i class="lni-tag"></i> {{ $item->hospital_code }}</a>
+                                        <a href=""><i class="lni-tag"></i> {{ $item->hospital_code }}</a>
                                     </span>
                                 </div>
                                 <p class="dsc"><i class="lni-map-marker"></i> {{ $item->address }}</p>

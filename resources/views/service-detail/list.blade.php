@@ -2,63 +2,67 @@
 @section('title',"Dashboard")
 
 @section('content')
- 
+
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Service Detail List</h3>
-      <a href="{{url('admin/serviceDetail/create')}}"><button type="submit" class="btn btn-primary  btn-flat float-right">Add</button></a>
-    </div>
-    {{ Session::get('service') }}
-    <!-- /.card-header -->
-    <div class="card-body">
-      <table id="service-detail_datatable" class="table table-hover">
-        <thead>
+  <div class="card-header">
+    <h3 class="card-title">Service Detail List</h3>
+    <a href="{{url('admin/serviceDetail/create')}}"><button type="submit"
+        class="btn btn-primary  btn-flat float-right">Add</button></a>
+  </div>
+  {{ Session::get('service') }}
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="service-detail_datatable" class="table table-hover">
+      <thead>
         <tr>
           <th class="bg-primary">Service Name</th>
           <th class="bg-primary">Total</th>
           <th class="bg-primary">Running</th>
           <th class="bg-primary">Available</th>
-      
+
           <th class="bg-primary">Option</th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
 
-            @foreach ( $serviceDetails as $serviceDetail)
+        @foreach ( $serviceDetails as $serviceDetail)
         <tr>
-           <td>{{ $serviceDetail->services-> service_name }}</td>
+          <td>{{ $serviceDetail->services-> service_name }}</td>
           <td>{{ $serviceDetail->total }}</td>
           <td>{{ $serviceDetail->running }}</td>
           <td>{{ $serviceDetail->total - $serviceDetail->running }}</td>
-          
+
           <td>
-              <a href="{{ url("admin/serviceDetail/$serviceDetail->id/edit") }}" class="btn btn-primary" >
-                <i class="fas fa-edit"></i> 
-                </a>
-                <a href="{{ url("admin/serviceDetail/delete/$serviceDetail->id")}}" onclick="return confirm('Are you sure')" class="btn btn-danger" >
-                  <i class="fas fa-trash-alt"></i>
-                </a>
-            </td>        
+            <a href="{{ url("admin/serviceDetail/$serviceDetail->id/edit") }}" class="btn btn-primary">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a href="{{ url("admin/serviceDetail/delete/$serviceDetail->id")}}" onclick="return confirm('Are you sure')"
+              class="btn btn-danger">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
         </tr>
         @endforeach
-        
-        </tbody>
-        
-      </table>
-    </div>
-    <!-- /.card-body -->
+
+      </tbody>
+
+    </table>
   </div>
+  <!-- /.card-body -->
+</div>
 
 @endsection
 
 @push("page-js")
 <!-- DataTables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-  
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+  integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    $(function () {
+  $(function () {
       // swal("Delete","","error",{
       //   button:"OK",
       // });
@@ -75,10 +79,6 @@
       });
     });
     <!-- DataTables -->
-  </script>
+</script>
 
-  <script>
-
-  </script>
-    
 @endpush

@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Doctor;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class DoctorController extends Controller
 {
+    
+    public function uploadImage($image,$path)
+    {
+        $image_name = Str::random(20);
+        $ext = strtolower($image->getClientOriginalExtension());
+        $image_full_name = $image_name.'.'.$ext;
+        $upload_path = 'Image/'.$path.'/';
+        $image_url = $upload_path.$image_full_name;
+        $success = $image->move(public_path($upload_path), $image_full_name);
+        if ($success) {
+            return $image_url;
+        }
+        else{
+            return '500';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,14 +66,25 @@ class DoctorController extends Controller
              'specialized'=>'required',
              'number'=> 'required',
              'chamber_time'=>'required',
-             'room_no'=>'required'
+             'room_no'=>'required',
+             'image_url'=>'required'
         ]);
         
-        // return session('LoggedUser');
-        $request->request->add(['admin_id' => session('LoggedUser')]);
-        $data= $request->all();
+        $doctor = new Doctor();
+        $doctor->doctor_Name = $request->doctor_Name;
+        $doctor->designation = $request->designation;
+        $doctor->email = $request->email;
+        $doctor->degree = $request->degree;
+        $doctor->specialized = $request->specialized;
+        $doctor->number = $request->number;
+        $doctor->chamber_time = $request->chamber_time;
+        $doctor->room_no = $request->room_no;
 
-        Doctor::create($data);
+        $image_url = $this->uploadImage($request->image,'doctor');
+        $doctor->image_url = $image_url;
+        $result = $doctor->save();
+        return ($result) ? redirect('admin/doctor')->with('success','Doctor added') : redirect('admin/doctor')->with('error','Failed');
+
         return redirect('admin/doctor');
     }
 
@@ -103,7 +132,8 @@ class DoctorController extends Controller
              'specialized'=>'required',
              'number'=> 'required',
              'chamber_time'=>'required',
-             'room_no'=>'required'
+             'room_no'=>'required',
+             'image_url'=>'required'
         ]);
         //return $request;
         
@@ -116,10 +146,17 @@ class DoctorController extends Controller
         $doctor->number = $request->number;
         $doctor->chamber_time = $request->chamber_time;
         $doctor->room_no = $request->room_no;
-        $doctor-> save();
 
-        return redirect('admin/doctor');
+        $old_img_path = $doctor->image_url;
+        if(File::exists($old_img_path)){
+            unlink($old_img_path);
+        }
+        $image_url = $this->uploadImage($request->image,'doctor');
+        $doctor->image_url = $image_url;
 
+        $doctor->save();
+
+        return redirect('admin/doctor')->with('success','Doctor info updated.');
     }
 
     /**

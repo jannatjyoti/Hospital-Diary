@@ -23,6 +23,7 @@ class CreateDoctorsTable extends Migration
             $table->string('number');
             $table->string('chamber_time');
             $table->string('room_no');
+            $table->string('image_url',100);
             $table->unsignedBigInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete("cascade");
             $table->timestamps();
