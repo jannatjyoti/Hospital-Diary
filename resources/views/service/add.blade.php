@@ -38,7 +38,7 @@
         </ul>
       </div>
       @endif
-      <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal">
+      <form action="{{ url('admin/service') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
 
@@ -47,6 +47,21 @@
             <div class="col-sm-8">
               <input type="text" name="service_name" value="{{ old('service_name') }}" class="form-control"
                 id="service_name" placeholder="Service Name">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-8">
+              <input type="file" accept="image/*" name="image" class="form-control" value="{{ old('image')}}" id="image"
+                placeholder="select image">
+            </div>
+          </div>
+
+          <div id="view_img_div" class="form-group row" hidden>
+            <label class="col-sm-2 col-form-label">View Image</label>
+            <div class="col-sm-10">
+              <img id="view_img" style="max-height: 150px; max-width: 220px" />
             </div>
           </div>
 

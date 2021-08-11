@@ -28,17 +28,32 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ url("admin/service/$service->id") }}" method="POST" class="form-horizontal">
+      <form action="{{ url("admin/service/$service->id") }}" method="POST" class="form-horizontal"
+        enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="card-body">
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
+            <label for="service_name" class="col-sm-2 col-form-label">Service Name</label>
             <div class="col-sm-10">
-              <input type="text" name="service_name" value="{{ $service-> service_name }}" class="form-control col-9"
-                id="inputEmail3" placeholder="Service Name">
+              <input type="text" name="service_name" value="{{ $service->service_name }}" class="form-control col-9"
+                id="service_name" placeholder="Service Name">
             </div>
           </div>
+          <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">Service Image</label>
+            <div class="col-sm-10">
+              <input type="file" name="image" value="{{ $service->image_url }}" class="form-control col-9" id="image"
+                placeholder="service image" accept="image/*">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">View Image</label>
+            <div class="col-sm-10">
+              <img id="view_img" style="max-height: 150px; max-width: 220px" src="{{ asset($service->image_url) }}" />
+            </div>
+          </div>
+
           <div class="form-group row">
             <label style="margin: 5px 10px">Status</label>
             <div class="col-sm-8">

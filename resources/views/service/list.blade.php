@@ -13,6 +13,7 @@
       <thead>
         <tr>
           <th class="bg-primary">Service Name</th>
+          <th class="bg-primary">Image</th>
           <th class="bg-primary">Status</th>
 
           <th class="bg-primary">Option</th>
@@ -23,6 +24,8 @@
         <tr>
           <input type="hidden" class="servicedelete_val" value="{{ $service->id }}">
           <td>{{ $service->service_name }}</td>
+          <td><img style="max-height: 70px; max-width: 100px" src="{{ asset($service->image_url) }}"
+              alt={{$service->service_name}} /></td>
           <td>{{ $service->is_active == 0 ? 'Inactive' : 'Active' }}</td>
 
           <td>

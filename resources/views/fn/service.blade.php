@@ -52,10 +52,7 @@
                                             <h4><a>{{ $service->service_name }} | {{ $item->hospital->hospital_name }}</a>
                                             </h4>
                                             <div class="meta-tag">
-                                                {{-- <h6>
-                                                    <a><i class="lni-cloud"></i> Total:
-                                                        {{ $item->total }}</a>
-                                                </h6> --}}
+                                                
                                                 
                                                 <h6>
                                                     <a><i class="lni-cloud-check"></i> Available:
@@ -67,10 +64,7 @@
                                                 </h6>
                                             </div>
                                             <div class="listing-bottom">
-                                                {{-- <p class="float-left">
-                                                    <a href="#"><i class="lni-home"></i>
-                                                        {{ $item->hospital->address }}</a>
-                                                </p> --}}
+                                                
                                                 <a data-toggle="modal" data-target="#serviceModal{{ $item->id }}"
                                                     href="" class="btn btn-common float-right">View
                                                     Details</a>

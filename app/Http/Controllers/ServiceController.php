@@ -9,6 +9,8 @@ use App\Models\Service;
 use App\Models\ServiceDetail;
 use App\Imports\ServicesImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 
 class ServiceController extends Controller
@@ -52,27 +54,45 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'service_name'=> 'required'
+            'service_name'=> 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
-        $request->request->add(['admin_id' => session('LoggedUser')]);
+
+        $service = new Service();
+        $service->service_name = $request->service_name;
+        $service->admin_id = session('LoggedUser');
+
+        //$request->request->add(['admin_id' => session('LoggedUser')]);
+
         if (session('role')=='1') {
-            $request->request->add(['is_active' => '1']);
+            $service->is_active = '1';
         }
-        $data= $request->all();
-        Service::create($data);
-        return redirect('admin/service');
+
+        $image_url = $this->uploadImage($request->image,'service');
+
+        $service->image_url = $image_url;
+        $result = $service->save();
+        return ($result) ? redirect('admin/service')->with('success','Service added') : redirect('admin/service')->with('error','Failed');
+        
+        //return redirect('admin/service');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function uploadImage($image,$path)
     {
-        //
+        $image_name = Str::random(20);
+        $ext = strtolower($image->getClientOriginalExtension());
+        $image_full_name = $image_name.'.'.$ext;
+        $upload_path = 'Image/'.$path.'/';
+        $image_url = $upload_path.$image_full_name;
+        $success = $image->move(public_path($upload_path), $image_full_name);
+        if ($success) {
+            return $image_url;
+        }
+        else{
+            return '500';
+        }
     }
+  
 
     /**
      * Show the form for editing the specified resource.
@@ -97,9 +117,18 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'service_name'=> 'required'
+            'service_name'=> 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
         $service = Service::find($id);
+        $old_img_path = $service->image_url;
+        if(File::exists($old_img_path)){
+            unlink($old_img_path);
+        }
+        
+        $image_url = $this->uploadImage($request->image,'service');
+        $service->image_url = $image_url;
+
         $service->service_name = $request->service_name;
         $service->is_active = $request->is_active;
         $service->save();
