@@ -7,7 +7,7 @@
   <div class="card-header">
     <h3 class="card-title">Service Detail List</h3>
     <a href="{{url('admin/serviceDetail/create')}}"><button type="submit"
-        class="btn btn-primary  btn-flat float-right">Add</button></a>
+        class="col-1 btn-outline-info  float-right">Add</button></a>
   </div>
   {{ Session::get('service') }}
   <!-- /.card-header -->
@@ -15,12 +15,12 @@
     <table id="service-detail_datatable" class="table table-hover">
       <thead>
         <tr>
-          <th class="bg-primary">Service Name</th>
-          <th class="bg-primary">Total</th>
-          <th class="bg-primary">Running</th>
-          <th class="bg-primary">Available</th>
+          <th class="bg-info">Service Name</th>
+          <th class="bg-info">Total</th>
+          <th class="bg-info">Running</th>
+          <th class="bg-info">Available</th>
 
-          <th class="bg-primary">Option</th>
+          <th class="bg-info">Option</th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +33,7 @@
           <td>{{ $serviceDetail->total - $serviceDetail->running }}</td>
 
           <td>
-            <a href="{{ url("admin/serviceDetail/$serviceDetail->id/edit") }}" class="btn btn-primary">
+            <a href="{{ url("admin/serviceDetail/$serviceDetail->id/edit") }}" class="btn btn-info">
               <i class="fas fa-edit"></i>
             </a>
             <a href="{{ url("admin/serviceDetail/delete/$serviceDetail->id")}}" onclick="return confirm('Are you sure')"

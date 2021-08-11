@@ -6,17 +6,19 @@
 <div class="card">
   <div class="card-header">
     <h3 class="card-title"><b>Service List</b></h3>
+    <a href="{{url('admin/service/create')}}"><button type="submit"
+      class="col-1 btn-outline-info  float-right">Add</button></a>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
     <table id="service_datatable" class="table table-hover">
       <thead>
         <tr>
-          <th class="bg-primary">Service Name</th>
-          <th class="bg-primary">Image</th>
-          <th class="bg-primary">Status</th>
+          <th class="bg-info">Service Name</th>
+          <th class="bg-info">Image</th>
+          <th class="bg-info">Status</th>
 
-          <th class="bg-primary">Option</th>
+          <th class="bg-info">Option</th>
         </tr>
       </thead>
       <tbody>
@@ -29,7 +31,7 @@
           <td>{{ $service->is_active == 0 ? 'Inactive' : 'Active' }}</td>
 
           <td>
-            <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-primary">
+            <a href="{{ url("admin/service/$service->id/edit") }}" class="btn btn-info">
               <i class="fas fa-edit"></i>
             </a>
             <a href="{{ url("admin/service/delete/$service->id")}}" onclick="return confirm('Are you sure')"

@@ -67,7 +67,7 @@ class DoctorController extends Controller
              'number'=> 'required',
              'chamber_time'=>'required',
              'room_no'=>'required',
-             'image_url'=>'required'
+             'image'=>'required'
         ]);
         
         $doctor = new Doctor();
@@ -79,6 +79,7 @@ class DoctorController extends Controller
         $doctor->number = $request->number;
         $doctor->chamber_time = $request->chamber_time;
         $doctor->room_no = $request->room_no;
+        $doctor->admin_id = session('LoggedUser');
 
         $image_url = $this->uploadImage($request->image,'doctor');
         $doctor->image_url = $image_url;
@@ -133,7 +134,7 @@ class DoctorController extends Controller
              'number'=> 'required',
              'chamber_time'=>'required',
              'room_no'=>'required',
-             'image_url'=>'required'
+             'image'=>'required'
         ]);
         //return $request;
         
