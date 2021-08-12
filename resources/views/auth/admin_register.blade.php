@@ -22,7 +22,7 @@
 
 <body class="hold-transition register-page" style="background-attachment: fixed; 
 background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_patient.jpg') }}');">
-  <div class="register-box" style="height: 600px;">
+  <div class="register-box" style="height: 625px;">
     <div class="register-logo">
       <a href="../../index2.html"><b>Admin Register</b></a>
     </div>

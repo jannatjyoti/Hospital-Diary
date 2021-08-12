@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $hospitals = Admin::select('id','hospital_name','address','contact_no')->skip(1)->take(10)->get();
+        $hospitals = Admin::select('id','hospital_name','address','contact_no','image_url')->skip(1)->take(10)->get();
         
         $services= Service::where('is_active', "1")->get();
         $total_admin = count(Admin::get())-1;

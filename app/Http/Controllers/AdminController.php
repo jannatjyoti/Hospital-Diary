@@ -179,7 +179,7 @@ class AdminController extends Controller
         $hospital->hospital_name = $request->hospital_name;
         $hospital->address = $request->address;
         $hospital->contact_no = $request->contact_no;
-        if ($request->image_url) {
+        if ($request->image) {
             $old_img_path = $hospital->image_url;
             if(File::exists($old_img_path)){
                 unlink($old_img_path);
@@ -187,7 +187,7 @@ class AdminController extends Controller
             $image_url = $this->uploadImage($request->image,'hospital');
             $hospital->image_url = $image_url;
         }
-
+        
         $hospital->save();
         return back()->with('success','Hospital info updated.');
     }
