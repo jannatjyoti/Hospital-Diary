@@ -145,14 +145,16 @@ class DoctorController extends Controller
         $doctor->number = $request->number;
         $doctor->chamber_time = $request->chamber_time;
         $doctor->room_no = $request->room_no;
-
-        $old_img_path = $doctor->image_url;
-        if(File::exists($old_img_path)){
-            unlink($old_img_path);
+        
+        if ($request->image) {
+            $old_img_path = $doctor->image_url;
+            if(File::exists($old_img_path)){
+                unlink($old_img_path);
+            }
+            $image_url = $this->uploadImage($request->image,'doctor');
+            $doctor->image_url = $image_url;
         }
-        $image_url = $this->uploadImage($request->image,'doctor');
-        $doctor->image_url = $image_url;
-
+        
         $doctor->save();
 
         return redirect('admin/doctor')->with('success','Doctor info updated.');

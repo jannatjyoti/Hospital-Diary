@@ -121,15 +121,18 @@ class ServiceController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
         $service = Service::find($id);
-        $old_img_path = $service->image_url;
-        if(File::exists($old_img_path)){
-            unlink($old_img_path);
-        }
-        $image_url = $this->uploadImage($request->image,'service');
-        $service->image_url = $image_url;
-
         $service->service_name = $request->service_name;
         $service->is_active = $request->is_active;
+
+        if ($request->image) {
+            $old_img_path = $service->image_url;
+            if(File::exists($old_img_path)){
+                unlink($old_img_path);
+            }
+            $image_url = $this->uploadImage($request->image,'service');
+            $service->image_url = $image_url;
+        }
+
         $service->save();
 
         return redirect('admin/service')->with('success','Service updated.');
