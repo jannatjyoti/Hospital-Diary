@@ -17,8 +17,8 @@ class ServiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('SuperAdmin')->except(['store','create','index','import']);
-        //$this->middleware('AuthCheck')->except(['index','create']);
+        $this->middleware('SuperAdmin')->only(['delete']);
+        $this->middleware('AuthCheck')->except(['index']);
     }
     /**
      * Display a listing of the resource.
@@ -118,11 +118,14 @@ class ServiceController extends Controller
     {
         $this->validate($request,[
             'service_name'=> 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'image|mimes:jpeg,png,jpg',
         ]);
         $service = Service::find($id);
         $service->service_name = $request->service_name;
-        $service->is_active = $request->is_active;
+
+        if ($request->is_active) {
+            $service->is_active = $request->is_active;
+        }
 
         if ($request->image) {
             $old_img_path = $service->image_url;
@@ -134,7 +137,6 @@ class ServiceController extends Controller
         }
 
         $service->save();
-
         return redirect('admin/service')->with('success','Service updated.');
     }
 
@@ -151,37 +153,6 @@ class ServiceController extends Controller
         // return redirect('admin/service');
         return response()->json(['massage'=>'Service deleted successfully']);
     }
-
-    // public function import(Request $request)
-    // {
-    //     $this->validate($request, ['select_file' => 'required|mimes:xls,xlsx']);
-
-    //     //$logged_user_id = Auth::user()->id;
-
-    //     $path = $request->file('select_file')->getRealPath();
-    //     $data = Excel::load($path)->get();
-
-    //     if($data->count() > 0)
-    //     {
-    //         foreach($data->toArray() as $key => $value)
-    //         {
-    //             foreach($value as $row)
-    //             {
-    //                 $insert_data[] = array(
-    //                 'service_name' => $row['service_name'],
-    //                 'admin_id' => $row['admin_id'],
-    //                 );
-    //             }
-    //         }
-
-    //         if(!empty($insert_data))
-    //         {
-    //             DB::table('services')->insert($insert_data);
-    //         }
-    //     }
-    //     return back()->with('success', 'Excel Data Imported successfully.');
-    //     return redirect('admin/service.list');
-    // }
 
     public function import() 
     {

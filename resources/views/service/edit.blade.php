@@ -53,16 +53,17 @@
               <img id="view_img" style="max-height: 150px; max-width: 220px" src="{{ asset($service->image_url) }}" />
             </div>
           </div>
-
+          @if(session('role') == '1')
           <div class="form-group row">
-            <label style="margin: 5px 10px">Status</label>
-            <div class="col-sm-8">
-              <select style="margin: 5px 60px" name="is_active" class="custom-select">
+            <label for="is_active" class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-10">
+              <select name="is_active" id="is_active" class="form-control col-9">
                 <option value="1">Active</option>
                 <option value="0">In-active</option>
               </select>
             </div>
           </div>
+          @endif
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

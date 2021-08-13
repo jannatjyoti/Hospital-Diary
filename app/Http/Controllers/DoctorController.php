@@ -122,7 +122,6 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return $id;
         $this->validate($request,[
             'doctor_Name'=>'required',
             'designation'=>'required',
@@ -132,9 +131,8 @@ class DoctorController extends Controller
              'number'=> 'required',
              'chamber_time'=>'required',
              'room_no'=>'required',
-             'image'=>'required'
+            'image' => 'image|mimes:jpeg,png,jpg',
         ]);
-        //return $request;
         
         $doctor = Doctor::find($id);
         $doctor->doctor_Name = $request-> doctor_Name;
