@@ -51,7 +51,7 @@
                     </div>
                     <div class="content">
                         <h4>Easy to Find Services</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p>Hospital diary is the best way to get to know about available services of a hospital. Just type what you are looking for and hit enter, a list of available service and its details will appear in your screen.</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="content">
                         <h4>24/7 Support</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p>We are happy to connect with you for 24/7 support. We believe what you believe about hospital services. And try to serve ourselves as much as we can.</p>
                     </div>
                 </div>
             </div>
