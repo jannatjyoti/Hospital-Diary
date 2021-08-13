@@ -20,7 +20,7 @@
           <th class="bg-info">Doctor Name</th>
           <th class="bg-info">Email</th>
           <th class="bg-info">Specialized</th>
-          <th class="bg-info">Image</th>
+          <th class="bg-info">Degree</th>
           <th class="bg-info">Option</th>
         </tr>
       </thead>
@@ -30,8 +30,11 @@
           <td>{{ $doctor-> doctor_Name }}</td>
           <td>{{ $doctor-> email }}</td>
           <td>{{ $doctor-> specialized}}</td>
-          <td><img style="max-height: 70px; max-width: 100px" src="{{ asset($doctor->image_url) }}"
-              alt={{$doctor->doctor_Name}} /></td>
+          <td>
+            {{ $doctor-> degree}}
+            {{-- <img style="max-height: 70px; max-width: 100px" src="{{ asset($doctor->image_url) }}"
+              alt={{$doctor->doctor_Name}} /> --}}
+            </td>
           <td class="col-2" style='white-space: nowrap'>
             <a href="{{ url("admin/doctor/$doctor->id") }}" class="btn btn-info">
               <i class="fas fa-eye"></i>
