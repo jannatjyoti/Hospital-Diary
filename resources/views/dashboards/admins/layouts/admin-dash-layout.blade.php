@@ -119,14 +119,14 @@
             </li>
 
             <li class="nav-item menu-close">
-              <a href="#" class="nav-link">
+              <a href="{{ url('admin/service') }}" class="nav-link">
                 <i class="nav-icon fas fa-concierge-bell"></i>
                 <p>
                   Service Management
-                  <i class="right fas fa-angle-left"></i>
+                  {{-- <i class="right fas fa-angle-left"></i> --}}
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('admin/service/create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -140,17 +140,17 @@
                   </a>
                 </li>
 
-              </ul>
+              </ul> --}}
             </li>
             <li class="nav-item menu-close">
-              <a href="#" class="nav-link">
+              <a href="{{url('admin/serviceDetail/create')}}" class="nav-link">
                 <i class="nav-icon fas fa-concierge-bell"></i>
                 <p>
                   Service Details
-                  <i class="right fas fa-angle-left"></i>
+                  {{-- <i class="right fas fa-angle-left"></i> --}}
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('admin/serviceDetail/create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -164,16 +164,17 @@
                   </a>
                 </li>
 
-              </ul>
+              </ul> --}}
             </li>
 
             <li class="nav-item menu-close">
-              <a href="#" class="nav-link ">
+              <a href="{{url('admin/doctor')}}" class="nav-link ">
                 <!-- <i class="nav-icon fas fa-concierge-bell"></i> -->
                 <i class="nav-icon fa fa-user-md" aria-hidden="true"></i>
-                <p> Doctor Management <i class="right fas fa-angle-left"></i></p>
+                <p> Doctor Management</p>
+                {{-- <i class="right fas fa-angle-left"></i> --}}
               </a>
-              <ul class="nav nav-treeview">
+              {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('admin/doctor/create')}}" class="nav-link">
                     <!-- <a href="add_doctor" class="nav-link"> -->
@@ -194,7 +195,7 @@
                     <p>View Available Doctor</p>
                   </a>
                 </li>
-              </ul>
+              </ul> --}}
             </li>
             {{-- <li class="nav-item">
               <a href="" class="nav-link">
