@@ -47,7 +47,7 @@
             <label for="doctor_Name" class="col-sm-2 col-form-label">Doctor Name</label>
             <div class="col-sm-10">
               <input type="text" name="doctor_Name" value="{{ old('doctor_Name') }}" class="form-control"
-                id="doctor_Name" placeholder="Doctor Name">
+                id="doctor_Name" placeholder="enter doctor name">
             </div>
           </div>
           <div class="form-group row">

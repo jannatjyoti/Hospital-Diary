@@ -46,7 +46,7 @@ background-size: 100% 100%;background-image: url('{{ asset('Image/hospital_dr_pa
 
           @csrf
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="admin_name" placeholder="enter full name"
+            <input type="text" class="form-control" name="admin_name" placeholder="enter admin name"
               value="{{ old('admin_name') }}">
             <span class="text-danger">@error('admin_name'){{ $message }} @enderror</span>
             <div class="input-group-append">
