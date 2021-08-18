@@ -72,6 +72,9 @@ class ServiceController extends Controller
 
         $service->image_url = $image_url;
         $result = $service->save();
+        if (session('role')=='2') {
+            return ($result) ? redirect('admin/service')->with('success','Need super admin approval.') : redirect('admin/service')->with('error','Failed');
+        }
         return ($result) ? redirect('admin/service')->with('success','Service added') : redirect('admin/service')->with('error','Failed');
         
         //return redirect('admin/service');
